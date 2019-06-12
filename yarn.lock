@@ -1155,6 +1155,11 @@
   resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.0.32.tgz#0d3cb31022f8427ea58c008af32b80da126ca4e3"
   integrity sha1-DTyzECL4Qn6ljACK8yuA2hJspOM=
 
+"@types/typography@^0.16.2":
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/@types/typography/-/typography-0.16.2.tgz#dfe68caf692185e1b84d9e583b44953b03b7d135"
+  integrity sha512-/lHKjwY0SekteqdOtGsYiXtT5T9RdF50kQGzp8wDRx8DtrJIXK6VVrJ+aAWYii51dZdXTGriXgCDtup6T+zz1Q==
+
 "@types/valid-url@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/valid-url/-/valid-url-1.0.2.tgz#60fa435ce24bfd5ba107b8d2a80796aeaf3a8f45"
@@ -12251,6 +12256,13 @@ typography-normalize@^0.16.19:
   version "0.16.19"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.16.19.tgz#58e0cf12466870c5b27006daa051fe7307780660"
   integrity sha512-vtnSv/uGBZVbd4e/ZhZB9HKBgKKlWQUXw74+ADIHHxzKp27CEf8PSR8TX1zF2qSyQ9/qMdqLwXYz8yRQFq9JLQ==
+
+typography-theme-japanese-tofu@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/typography-theme-japanese-tofu/-/typography-theme-japanese-tofu-0.0.1.tgz#b61ddae960ae3096fdaf46fbbfce67c485431bec"
+  integrity sha512-voFGejqwAo3ijQQ06A0PkFhVMHAlHwoQLyAKe4TEwqQ264eM9Xbj0YjZQX/nNyOH/A+VTSxw4J0KeR2mF4RBdg==
+  dependencies:
+    gray-percentage "^2.0.0"
 
 typography-theme-wordpress-2016@^0.16.19:
   version "0.16.19"

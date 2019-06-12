@@ -37,12 +37,14 @@
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",
     "typography": "^0.16.19",
+    "typography-theme-japanese-tofu": "^0.0.1",
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.1",
     "@graphql-codegen/typescript": "^1.2.1",
     "@graphql-codegen/typescript-operations": "^1.2.1",
+    "@types/typography": "^0.16.2",
     "graphql": "^14.3.1",
     "prettier": "^1.18.2",
     "typescript": "^3.5.1"
