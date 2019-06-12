@@ -12,12 +12,24 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
+    const filepath = node.fileAbsolutePath
+    const reg = /content\/blog/
+    if (reg.test(filepath)) {
+      const value = createFilePath({ node, getNode })
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/blog${value}`,
+      })
+    }
+    if (filepath.match(/content\/pages/)) {
+      const value = createFilePath({ node, getNode })
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/pages${value}`,
+      })
+    }
   }
 }
 
@@ -25,7 +37,9 @@ function createIndexPage(graphql, createPage) {
   const indexPage = path.resolve("./src/templates/indexes.js")
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      ) {
         totalCount
       }
     }
@@ -70,6 +84,7 @@ function createBlogPosts(graphql, createPage) {
   return graphql(`
     {
       allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
