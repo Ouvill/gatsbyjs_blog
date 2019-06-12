@@ -77,7 +77,7 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       skip: $index
-      limit: 10
+      limit: 9
     ) {
       edges {
         node {
