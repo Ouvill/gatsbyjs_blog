@@ -2693,6 +2693,41 @@ export type WordCountFilterInput = {
   readonly sentences?: Maybe<IntQueryOperatorInput>
   readonly words?: Maybe<IntQueryOperatorInput>
 }
+export type BioQueryQueryVariables = {}
+
+export type BioQueryQuery = { readonly __typename?: "Query" } & {
+  readonly avatar: Maybe<
+    { readonly __typename?: "File" } & {
+      readonly childImageSharp: Maybe<
+        { readonly __typename?: "ImageSharp" } & {
+          readonly fixed: Maybe<
+            {
+              readonly __typename?: "ImageSharpFixed"
+            } & GatsbyImageSharpFixedFragment
+          >
+        }
+      >
+    }
+  >
+  readonly site: Maybe<
+    { readonly __typename?: "Site" } & {
+      readonly siteMetadata: Maybe<
+        { readonly __typename?: "SiteSiteMetadata" } & Pick<
+          SiteSiteMetadata,
+          "author"
+        > & {
+            readonly social: Maybe<
+              { readonly __typename?: "SiteSiteMetadataSocial" } & Pick<
+                SiteSiteMetadataSocial,
+                "twitter"
+              >
+            >
+          }
+      >
+    }
+  >
+}
+
 export type IndexesQueryVariables = {
   index: Scalars["Int"]
 }
