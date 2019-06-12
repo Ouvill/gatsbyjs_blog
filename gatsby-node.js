@@ -34,7 +34,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 function createIndexPage(graphql, createPage) {
-  const indexPage = path.resolve("./src/templates/indexes.js")
+  const indexPage = path.resolve("./src/templates/indexes.tsx")
   return graphql(`
     {
       allMarkdownRemark(

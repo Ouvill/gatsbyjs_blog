@@ -1,24 +1,40 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+import { Card } from "@material-ui/core"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { IndexesQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 
-const Indexes = props => {
+interface IndexesProps {
+  data: IndexesQuery
+  pageContext: {
+    next: string
+    previous: string
+  }
+}
+
+const Indexes: React.FC<IndexesProps> = props => {
   const { data } = props
   const { previous, next } = props.pageContext
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : []
 
   return (
     <div>
-      <ul>
+      <div>
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return <li key={node.fields.slug}>{title}</li>
+          if (node.frontmatter && node.fields && node.fields.slug) {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <Card key={node.fields.slug}>
+                <Link to={node.fields.slug}>{title}</Link>
+              </Card>
+            )
+          }
         })}
-      </ul>
+      </div>
+
       {previous != null && (
         <Link to={`/indexes/${previous}`}>前の10件 {previous}</Link>
       )}
