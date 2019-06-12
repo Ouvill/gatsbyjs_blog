@@ -1,6 +1,9 @@
 import React from "react"
 import { Link, PageRendererProps } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
+import { ThemeProvider } from "@material-ui/styles"
+import { theme } from "./theme"
+import { Typography } from "@material-ui/core"
 
 interface LayoutProps extends PageRendererProps {
   title: string
@@ -14,7 +17,7 @@ class Layout extends React.Component<LayoutProps> {
 
     if (location.pathname === rootPath || location.pathname.match(/indexes/)) {
       header = (
-        <h1
+        <Typography
           style={{
             ...scale(1.5),
             marginBottom: rhythm(1.5),
@@ -31,11 +34,11 @@ class Layout extends React.Component<LayoutProps> {
           >
             {title}
           </Link>
-        </h1>
+        </Typography>
       )
     } else {
       header = (
-        <h3
+        <Typography
           style={{
             fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
@@ -51,26 +54,28 @@ class Layout extends React.Component<LayoutProps> {
           >
             {title}
           </Link>
-        </h3>
+        </Typography>
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div
+          style={{
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          }}
+        >
+          <header>{header}</header>
+          <main>{children}</main>
+          <footer>
+            Â© {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
+      </ThemeProvider>
     )
   }
 }
