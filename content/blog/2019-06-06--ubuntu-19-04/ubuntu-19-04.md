@@ -8,6 +8,7 @@ tags:
     - linux
     - ubuntu
     - app
+cover: "./images/Disco-Dingo.jpg"
 ---
 
 ## Ubuntu 19.04 インストール

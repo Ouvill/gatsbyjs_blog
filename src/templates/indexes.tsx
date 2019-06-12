@@ -1,11 +1,16 @@
 import React from "react"
 import { Link, graphql, PageRendererProps } from "gatsby"
-import { Card, Typography } from "@material-ui/core"
+import Img, { FluidObject } from "gatsby-image"
+import { Card, Typography, Grid } from "@material-ui/core"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import { IndexesQuery, MarkdownRemarkEdge } from "../graphqlTypes"
+import {
+  IndexesQuery,
+  MarkdownRemarkEdge,
+  ImageSharpFluid,
+} from "../graphqlTypes"
 
 interface IndexesProps extends PageRendererProps {
   data: IndexesQuery
@@ -24,20 +29,30 @@ const Indexes: React.FC<IndexesProps> = props => {
 
   return (
     <Layout location={props.location} title={siteTitle}>
-      <div>
+      <Grid container>
         {posts.map(({ node }) => {
           if (node.frontmatter && node.fields && node.fields.slug) {
             const title = node.frontmatter.title || node.fields.slug
+            const excerpt = node.excerpt
+            const coverImg =
+              node.frontmatter.cover &&
+              node.frontmatter.cover.childImageSharp &&
+              node.frontmatter.cover.childImageSharp.fluid
             return (
               <Card key={node.fields.slug}>
+                {coverImg && (
+                  <Img fluid={coverImg as FluidObject} alt="cover image"></Img>
+                )}
                 <Typography>
                   <Link to={node.fields.slug}>{title}</Link>
                 </Typography>
+                <Typography>{excerpt}</Typography>
+                <Typography></Typography>
               </Card>
             )
           }
         })}
-      </div>
+      </Grid>
 
       <div>
         {previous != null && (
@@ -74,6 +89,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            cover {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
