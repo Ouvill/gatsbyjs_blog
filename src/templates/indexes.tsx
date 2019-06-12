@@ -1,13 +1,13 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { Card } from "@material-ui/core"
+import { Link, graphql, PageRendererProps } from "gatsby"
+import { Card, Typography } from "@material-ui/core"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { IndexesQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 
-interface IndexesProps {
+interface IndexesProps extends PageRendererProps {
   data: IndexesQuery
   pageContext: {
     next: string
@@ -18,28 +18,34 @@ interface IndexesProps {
 const Indexes: React.FC<IndexesProps> = props => {
   const { data } = props
   const { previous, next } = props.pageContext
+  const siteTitle =
+    (data.site && data.site.siteMetadata && data.site.siteMetadata.title) || ""
   const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : []
 
   return (
-    <div>
+    <Layout location={props.location} title={siteTitle}>
       <div>
         {posts.map(({ node }) => {
           if (node.frontmatter && node.fields && node.fields.slug) {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <Card key={node.fields.slug}>
-                <Link to={node.fields.slug}>{title}</Link>
+                <Typography>
+                  <Link to={node.fields.slug}>{title}</Link>
+                </Typography>
               </Card>
             )
           }
         })}
       </div>
 
-      {previous != null && (
-        <Link to={`/indexes/${previous}`}>前の10件 {previous}</Link>
-      )}
-      {next != null && <Link to={`/indexes/${next}`}>次の10件 {next}</Link>}
-    </div>
+      <div>
+        {previous != null && (
+          <Link to={`/indexes/${previous}`}>前の10件 {previous}</Link>
+        )}
+        {next != null && <Link to={`/indexes/${next}`}>次の10件 {next}</Link>}
+      </div>
+    </Layout>
   )
 }
 
@@ -54,6 +60,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       skip: $index
       limit: 10
     ) {

@@ -64,17 +64,17 @@ function createIndexPage(graphql, createPage) {
             next,
           },
         })
-      } else {
-        createPage({
-          path: `indexes/${i}`,
-          component: indexPage,
-          context: {
-            index: i * 10,
-            previous,
-            next,
-          },
-        })
       }
+
+      createPage({
+        path: `indexes/${i}`,
+        component: indexPage,
+        context: {
+          index: i * 10,
+          previous,
+          next,
+        },
+      })
     }
   })
 }
