@@ -1,21 +1,39 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, PageRendererProps } from "gatsby"
 
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+interface NavNove {
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+  }
+}
 
+interface BlogPostTemplateProps extends PageRendererProps {
+  data: BlogPostBySlugQuery
+  pageContext: {
+    previous?: NavNove
+    next?: NavNove
+  }
+}
+
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
+  const post = props.data.markdownRemark
+  const siteTitle = props.data.site!.siteMetadata!.title || ""
+  const { previous, next } = props.pageContext
+
+  if (post && post.frontmatter && post.html) {
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={props.location} title={siteTitle}>
         <SEO
-          title={post.frontmatter.title}
+          title={post.frontmatter.title ? post.frontmatter.title : "unnamed"}
           description={post.frontmatter.description || post.excerpt}
         />
         <h1>{post.frontmatter.title}</h1>
@@ -61,6 +79,12 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+      </Layout>
+    )
+  } else {
+    return (
+      <Layout location={props.location} title={siteTitle}>
+        <div>post data error</div>
       </Layout>
     )
   }

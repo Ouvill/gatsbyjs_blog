@@ -2734,6 +2734,36 @@ export type BioQueryQuery = { readonly __typename?: "Query" } & {
   >
 }
 
+export type BlogPostBySlugQueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type BlogPostBySlugQuery = { readonly __typename?: "Query" } & {
+  readonly site: Maybe<
+    { readonly __typename?: "Site" } & {
+      readonly siteMetadata: Maybe<
+        { readonly __typename?: "SiteSiteMetadata" } & Pick<
+          SiteSiteMetadata,
+          "title" | "author"
+        >
+      >
+    }
+  >
+  readonly markdownRemark: Maybe<
+    { readonly __typename?: "MarkdownRemark" } & Pick<
+      MarkdownRemark,
+      "id" | "excerpt" | "html"
+    > & {
+        readonly frontmatter: Maybe<
+          { readonly __typename?: "MarkdownRemarkFrontmatter" } & Pick<
+            MarkdownRemarkFrontmatter,
+            "title" | "date" | "description"
+          >
+        >
+      }
+  >
+}
+
 export type IndexesQueryVariables = {
   index: Scalars["Int"]
   defaultCover: Scalars["String"]

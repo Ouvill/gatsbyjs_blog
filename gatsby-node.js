@@ -88,7 +88,7 @@ function createIndexPage(graphql, createPage) {
 }
 
 function createBlogPosts(graphql, createPage) {
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
   return graphql(`
     {
       allMarkdownRemark(
