@@ -1929,6 +1929,7 @@ export enum SiteFieldsEnum {
   SiteMetadataAuthor = "siteMetadata___author",
   SiteMetadataDescription = "siteMetadata___description",
   SiteMetadataSiteUrl = "siteMetadata___siteUrl",
+  SiteMetadataDefaultCover = "siteMetadata___defaultCover",
   SiteMetadataSocialTwitter = "siteMetadata___social___twitter",
   Port = "port",
   Host = "host",
@@ -2001,11 +2002,13 @@ export type SitePageContext = {
   __typename?: "SitePageContext"
   readonly slug?: Maybe<Scalars["String"]>
   readonly index?: Maybe<Scalars["Int"]>
+  readonly defaultCover?: Maybe<Scalars["String"]>
 }
 
 export type SitePageContextFilterInput = {
   readonly slug?: Maybe<StringQueryOperatorInput>
   readonly index?: Maybe<IntQueryOperatorInput>
+  readonly defaultCover?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -2109,6 +2112,7 @@ export enum SitePageFieldsEnum {
   IsCreatedByStatefulCreatePages = "isCreatedByStatefulCreatePages",
   ContextSlug = "context___slug",
   ContextIndex = "context___index",
+  ContextDefaultCover = "context___defaultCover",
   PluginCreatorId = "pluginCreator___id",
   PluginCreatorParentId = "pluginCreator___parent___id",
   PluginCreatorParentParentId = "pluginCreator___parent___parent___id",
@@ -2642,6 +2646,7 @@ export type SiteSiteMetadata = {
   readonly author?: Maybe<Scalars["String"]>
   readonly description?: Maybe<Scalars["String"]>
   readonly siteUrl?: Maybe<Scalars["String"]>
+  readonly defaultCover?: Maybe<Scalars["String"]>
   readonly social?: Maybe<SiteSiteMetadataSocial>
 }
 
@@ -2650,6 +2655,7 @@ export type SiteSiteMetadataFilterInput = {
   readonly author?: Maybe<StringQueryOperatorInput>
   readonly description?: Maybe<StringQueryOperatorInput>
   readonly siteUrl?: Maybe<StringQueryOperatorInput>
+  readonly defaultCover?: Maybe<StringQueryOperatorInput>
   readonly social?: Maybe<SiteSiteMetadataSocialFilterInput>
 }
 
@@ -2730,16 +2736,20 @@ export type BioQueryQuery = { readonly __typename?: "Query" } & {
 
 export type IndexesQueryVariables = {
   index: Scalars["Int"]
+  defaultCover: Scalars["String"]
 }
 
 export type IndexesQuery = { readonly __typename?: "Query" } & {
-  readonly site: Maybe<
-    { readonly __typename?: "Site" } & {
-      readonly siteMetadata: Maybe<
-        { readonly __typename?: "SiteSiteMetadata" } & Pick<
-          SiteSiteMetadata,
-          "title"
-        >
+  readonly file: Maybe<
+    { readonly __typename?: "File" } & {
+      readonly childImageSharp: Maybe<
+        { readonly __typename?: "ImageSharp" } & {
+          readonly fluid: Maybe<
+            {
+              readonly __typename?: "ImageSharpFluid"
+            } & GatsbyImageSharpFluidFragment
+          >
+        }
       >
     }
   >
@@ -2779,6 +2789,16 @@ export type IndexesQuery = { readonly __typename?: "Query" } & {
               >
             }
         }
+      >
+    }
+  >
+  readonly site: Maybe<
+    { readonly __typename?: "Site" } & {
+      readonly siteMetadata: Maybe<
+        { readonly __typename?: "SiteSiteMetadata" } & Pick<
+          SiteSiteMetadata,
+          "title"
+        >
       >
     }
   >

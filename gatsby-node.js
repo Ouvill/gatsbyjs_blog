@@ -37,6 +37,11 @@ function createIndexPage(graphql, createPage) {
   const indexPage = path.resolve("./src/templates/indexes.tsx")
   return graphql(`
     {
+      site {
+        siteMetadata {
+          defaultCover
+        }
+      }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       ) {
@@ -49,6 +54,7 @@ function createIndexPage(graphql, createPage) {
     }
 
     const total = result.data.allMarkdownRemark.totalCount
+    const defaultCover = result.data.site.siteMetadata.defaultCover
     const pages = total / 9
     const rest = total % 9
     for (i = 0; i < pages; i++) {
@@ -60,6 +66,7 @@ function createIndexPage(graphql, createPage) {
           component: indexPage,
           context: {
             index: i * 9,
+            defaultCover,
             previous,
             next,
           },
@@ -71,6 +78,7 @@ function createIndexPage(graphql, createPage) {
         component: indexPage,
         context: {
           index: i * 9,
+          defaultCover,
           previous,
           next,
         },

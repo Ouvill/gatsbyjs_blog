@@ -4,6 +4,7 @@ module.exports = {
     author: `Ouvill(おーびる)`,
     description: `IT 関連の記事`,
     siteUrl: `https://blog.ouvill.net/`,
+    defaultCover: `${__dirname}/content/assets/site-header.jpg`,
     social: {
       twitter: `Ouvill`,
     },

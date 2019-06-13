@@ -2,7 +2,7 @@ import React from "react"
 import { Link, PageRendererProps } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import { ThemeProvider } from "@material-ui/styles"
-import { theme } from "./theme"
+import { theme, siteStyle } from "./theme"
 import { Typography } from "@material-ui/core"
 
 interface LayoutProps extends PageRendererProps {
@@ -63,8 +63,8 @@ class Layout extends React.Component<LayoutProps> {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(24),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            maxWidth: siteStyle.maxWidth,
+            // padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
           <header>{header}</header>
