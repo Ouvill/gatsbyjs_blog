@@ -6,6 +6,14 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
+import { Paper, Theme, Box } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
+
+const useStyles = makeStyles((theme: Theme) => ({
+  paper: {
+    padding: "16px",
+  },
+}))
 
 interface NavNove {
   fields: {
@@ -25,6 +33,7 @@ interface BlogPostTemplateProps extends PageRendererProps {
 }
 
 const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
+  const classes = useStyles()
   const post = props.data.markdownRemark
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
@@ -36,49 +45,51 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
           title={post.frontmatter.title ? post.frontmatter.title : "unnamed"}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+        <Paper className={classes.paper}>
+          <h1>{post.frontmatter.title}</h1>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              display: `block`,
+              marginBottom: rhythm(1),
+              marginTop: rhythm(-1),
+            }}
+          >
+            {post.frontmatter.date}
+          </p>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <hr
+            style={{
+              marginBottom: rhythm(1),
+            }}
+          />
+          <Bio />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                ← {next.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                {previous.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  ← {next.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  {previous.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </Paper>
       </Layout>
     )
   } else {

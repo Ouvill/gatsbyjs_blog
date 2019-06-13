@@ -21,11 +21,12 @@ import {
   ImageSharpFluid,
 } from "../graphqlTypes"
 import siteConfig from "../../gatsby-config"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles, createStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
     maxWidth: 320,
+    borderRadius: "1rem",
     height: "100%",
   },
   cardAction: {
