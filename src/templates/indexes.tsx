@@ -22,6 +22,7 @@ import {
 } from "../graphqlTypes"
 import siteConfig from "../../gatsby-config"
 import { makeStyles, createStyles } from "@material-ui/styles"
+import styled from "styled-components"
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -44,6 +45,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
+const Wrap = styled.div`
+  max-width: 820px;
+  margin: 0 auto;
+`
+
 interface IndexesProps extends PageRendererProps {
   data: IndexesQuery
   pageContext: {
@@ -63,64 +69,65 @@ const Indexes: React.FC<IndexesProps> = props => {
 
   return (
     <Layout location={props.location} title={siteTitle}>
-      <Grid container spacing={4} justify="center">
-        {posts.map(({ node }) => {
-          if (node.frontmatter && node.fields && node.fields.slug) {
-            const title = node.frontmatter.title || node.fields.slug
-            const excerpt = node.excerpt
-            const coverImg =
-              (node.frontmatter.cover &&
-                node.frontmatter.cover.childImageSharp &&
-                node.frontmatter.cover.childImageSharp.fluid) ||
-              (data.file &&
-                data.file.childImageSharp &&
-                data.file.childImageSharp.fluid)
-            return (
-              <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardActionArea
-                    className={classes.cardAction}
-                    component={Link}
-                    to={node.fields.slug}
-                  >
-                    {coverImg && (
-                      <CardMedia
-                        component={Img}
-                        fluid={coverImg as FluidObject}
-                        alt="cover image"
-                      ></CardMedia>
-                    )}
-                    <CardContent>
-                      <Typography variant="h6" component="h2">
-                        {title}
-                      </Typography>
-                      {/* <Typography>{excerpt}</Typography> */}
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            )
-          }
-        })}
-      </Grid>
+      <Wrap>
+        <Grid container spacing={4} justify="center">
+          {posts.map(({ node }) => {
+            if (node.frontmatter && node.fields && node.fields.slug) {
+              const title = node.frontmatter.title || node.fields.slug
+              const excerpt = node.excerpt
+              const coverImg =
+                (node.frontmatter.cover &&
+                  node.frontmatter.cover.childImageSharp &&
+                  node.frontmatter.cover.childImageSharp.fluid) ||
+                (data.file &&
+                  data.file.childImageSharp &&
+                  data.file.childImageSharp.fluid)
+              return (
+                <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardActionArea
+                      className={classes.cardAction}
+                      component={Link}
+                      to={node.fields.slug}
+                    >
+                      {coverImg && (
+                        <Img
+                          fluid={coverImg as FluidObject}
+                          alt="cover image"
+                        ></Img>
+                      )}
+                      <CardContent>
+                        <Typography variant="h6" component="h2">
+                          {title}
+                        </Typography>
+                        {/* <Typography>{excerpt}</Typography> */}
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              )
+            }
+          })}
+        </Grid>
 
-      <div className={classes.nav}>
-        <Button
-          component={Link}
-          to={`/indexes/${previous}`}
-          disabled={previous == null ? true : false}
-        >
-          前の10件
-        </Button>
+        <div className={classes.nav}>
+          <Button
+            component={Link}
+            to={`/indexes/${previous}`}
+            disabled={previous == null ? true : false}
+          >
+            前の10件
+          </Button>
 
-        <Button
-          component={Link}
-          to={`/indexes/${next}`}
-          disabled={next == null ? true : false}
-        >
-          次の10件
-        </Button>
-      </div>
+          <Button
+            component={Link}
+            to={`/indexes/${next}`}
+            disabled={next == null ? true : false}
+          >
+            次の10件
+          </Button>
+        </div>
+      </Wrap>
     </Layout>
   )
 }

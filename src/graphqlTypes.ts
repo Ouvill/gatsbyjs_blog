@@ -2687,7 +2687,12 @@ export type BlogPostBySlugQuery = { __typename?: "Query" } & {
   markdownRemark: Maybe<
     { __typename?: "MarkdownRemark" } & Pick<
       MarkdownRemark,
-      "id" | "excerpt" | "html" | "tableOfContents"
+      | "id"
+      | "excerpt"
+      | "html"
+      | "htmlAst"
+      | "rawMarkdownBody"
+      | "tableOfContents"
     > & {
         frontmatter: Maybe<
           { __typename?: "MarkdownRemarkFrontmatter" } & Pick<

@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, graphql, PageRendererProps } from "gatsby"
+import unified from "unified"
+import rehypeReact from "rehype-react"
 
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
@@ -9,10 +11,16 @@ import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 import { Paper, Theme, Box, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
+import Counter from "../components/Counter"
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { "interactive-counter": Counter },
+}).Compiler
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
-    maxWidth: "720px",
+    maxWidth: "760px",
     padding: "16px",
     position: "relative",
     margin: "0 auto",
@@ -24,9 +32,15 @@ const BlogContents = styled.div`
 `
 
 const TOC = styled(Paper)`
+  max-height: calc(80vh - 100px);
   position: sticky;
   top: 100px;
   padding: ${props => props.theme.spacing(3)}px;
+  overflow-y: auto;
+
+  * {
+    color: blue;
+  }
 `
 
 interface NavNove {
@@ -84,7 +98,8 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               >
                 {post.frontmatter.date}
               </p>
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              {renderAst(post.htmlAst)}
+              {/* <div dangerouslySetInnerHTML={{ __html: post.html }} /> */}
               <hr
                 style={{
                   marginBottom: rhythm(1),
@@ -144,7 +159,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      htmlAst
       tableOfContents
       frontmatter {
         title
