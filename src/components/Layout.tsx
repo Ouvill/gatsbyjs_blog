@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, PageRendererProps } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
 // import { ThemeProvider } from "@material-ui/styles"
 import { theme, siteStyle } from "./theme"
 import { Typography, Theme, makeStyles } from "@material-ui/core"
@@ -80,7 +79,6 @@ const Layout: React.FC<LayoutProps> = props => {
         <Typography
           className={classes.title}
           style={{
-            ...scale(1.5),
             marginTop: "48px",
           }}
         >

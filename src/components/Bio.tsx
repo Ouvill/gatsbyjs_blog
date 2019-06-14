@@ -10,8 +10,6 @@ import { StaticQuery, graphql } from "gatsby"
 import { BioQueryQuery } from "../graphqlTypes"
 import Image, { FixedObject } from "gatsby-image"
 
-import { rhythm } from "../utils/typography"
-
 const Bio: React.FC = () => {
   return (
     <StaticQuery
@@ -23,7 +21,6 @@ const Bio: React.FC = () => {
             <div
               style={{
                 display: `flex`,
-                marginBottom: rhythm(2.5),
               }}
             >
               {data.avatar && data.avatar.childImageSharp && (
@@ -31,7 +28,6 @@ const Bio: React.FC = () => {
                   fixed={data.avatar.childImageSharp.fixed as FixedObject}
                   alt={author ? author : ""}
                   style={{
-                    marginRight: rhythm(1 / 2),
                     marginBottom: 0,
                     minWidth: 50,
                     borderRadius: `100%`,

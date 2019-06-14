@@ -6,7 +6,6 @@ import rehypeReact from "rehype-react"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
 import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 import { Paper, Theme, Box, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
@@ -39,6 +38,7 @@ const TOC = styled(Paper)`
   overflow-y: auto;
 
   * {
+    font-family: "serif";
     color: blue;
   }
 `
@@ -66,7 +66,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
 
-  if (post && post.frontmatter && post.html) {
+  if (post && post.frontmatter) {
     return (
       <Layout location={props.location} title={siteTitle}>
         <SEO
@@ -90,21 +90,14 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               <h1>{post.frontmatter.title}</h1>
               <p
                 style={{
-                  ...scale(-1 / 5),
                   display: `block`,
-                  marginBottom: rhythm(1),
-                  marginTop: rhythm(-1),
                 }}
               >
                 {post.frontmatter.date}
               </p>
               {renderAst(post.htmlAst)}
               {/* <div dangerouslySetInnerHTML={{ __html: post.html }} /> */}
-              <hr
-                style={{
-                  marginBottom: rhythm(1),
-                }}
-              />
+              <hr style={{}} />
               <Bio />
 
               <ul
