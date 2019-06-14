@@ -38,10 +38,23 @@ const TOC = styled(Paper)`
   margin: 0 ${props => props.theme.spacing(2)}px;
   padding: ${props => props.theme.spacing(3)}px;
   overflow-y: auto;
-
   * {
-    font-family: "serif";
+    /* font-family: "serif"; */
     color: ${props => props.theme.palette.secondary.dark};
+    &:hover {
+      color: ${props => props.theme.palette.secondary.main};
+    }
+
+    text-decoration: none;
+
+    ul {
+      padding: 0;
+      list-style-type: none;
+    }
+
+    ul ul {
+      padding: 0 ${props => props.theme.spacing(2)}px;
+    }
   }
 `
 

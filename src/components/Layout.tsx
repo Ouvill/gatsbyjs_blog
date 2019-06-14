@@ -10,6 +10,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
+
+  a {
+    color: ${props => props.theme.palette.primary.dark};
+    &:hover {
+       color: ${props => props.theme.palette.secondary.dark}
+      }
+    }
+  }
 `
 
 const Header = styled.header`
