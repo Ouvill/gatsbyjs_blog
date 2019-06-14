@@ -264,10 +264,10 @@ const SVGComponents = () => {
 
 現在のコンポーネントを表示してみると以下のようになります。マウスが四角形の左上に貼り付いてしまっています。
 
-<video style="width:100%;" controls>
+<!-- <video style="width:100%;" controls>
     <source src="./images/movie1.mp4" type="video/mp4">
    <p>※ご利用のブラウザでは再生することができません。</p>
-</video>
+</video> -->
 
 このままではよくありません。
 
@@ -339,10 +339,10 @@ const SVGComponents = () => {
 
 これを表示させてみると、以下のようになります。
 
-<video style="width:100%;" controls>
+<!-- <video style="width:100%;" controls>
     <source src="./images/movie1.mp4" type="video/mp4">
    <p>※ご利用のブラウザでは再生することができません。</p>
-</video>
+</video> -->
 
 マウスの動きに追従するように、四角形が動いていると思います。
 

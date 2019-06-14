@@ -2160,6 +2160,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsName = "pluginCreator___pluginOptions___plugins___name",
   PluginCreatorPluginOptionsPluginsVersion = "pluginCreator___pluginOptions___plugins___version",
   PluginCreatorPluginOptionsPluginsBrowserApIs = "pluginCreator___pluginOptions___plugins___browserAPIs",
+  PluginCreatorPluginOptionsPluginsSsrApIs = "pluginCreator___pluginOptions___plugins___ssrAPIs",
   PluginCreatorPluginOptionsPluginsPluginFilepath = "pluginCreator___pluginOptions___plugins___pluginFilepath",
   PluginCreatorPluginOptionsPath = "pluginCreator___pluginOptions___path",
   PluginCreatorPluginOptionsName = "pluginCreator___pluginOptions___name",
@@ -2171,7 +2172,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsThemeColor = "pluginCreator___pluginOptions___theme_color",
   PluginCreatorPluginOptionsDisplay = "pluginCreator___pluginOptions___display",
   PluginCreatorPluginOptionsIcon = "pluginCreator___pluginOptions___icon",
-  PluginCreatorPluginOptionsPathToConfigModule = "pluginCreator___pluginOptions___pathToConfigModule",
   PluginCreatorPluginOptionsPathCheck = "pluginCreator___pluginOptions___pathCheck",
   PluginCreatorNodeApIs = "pluginCreator___nodeAPIs",
   PluginCreatorBrowserApIs = "pluginCreator___browserAPIs",
@@ -2370,6 +2370,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsPluginOptionsMaxWidth = "pluginOptions___plugins___pluginOptions___maxWidth",
   PluginOptionsPluginsPluginOptionsWrapperStyle = "pluginOptions___plugins___pluginOptions___wrapperStyle",
   PluginOptionsPluginsBrowserApIs = "pluginOptions___plugins___browserAPIs",
+  PluginOptionsPluginsSsrApIs = "pluginOptions___plugins___ssrAPIs",
   PluginOptionsPluginsPluginFilepath = "pluginOptions___plugins___pluginFilepath",
   PluginOptionsPath = "pluginOptions___path",
   PluginOptionsName = "pluginOptions___name",
@@ -2381,7 +2382,6 @@ export enum SitePluginFieldsEnum {
   PluginOptionsThemeColor = "pluginOptions___theme_color",
   PluginOptionsDisplay = "pluginOptions___display",
   PluginOptionsIcon = "pluginOptions___icon",
-  PluginOptionsPathToConfigModule = "pluginOptions___pathToConfigModule",
   PluginOptionsPathCheck = "pluginOptions___pathCheck",
   NodeApIs = "nodeAPIs",
   BrowserApIs = "browserAPIs",
@@ -2516,7 +2516,6 @@ export type SitePluginPluginOptions = {
   theme_color?: Maybe<Scalars["String"]>
   display?: Maybe<Scalars["String"]>
   icon?: Maybe<Scalars["String"]>
-  pathToConfigModule?: Maybe<Scalars["String"]>
   pathCheck?: Maybe<Scalars["Boolean"]>
 }
 
@@ -2532,7 +2531,6 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color?: Maybe<StringQueryOperatorInput>
   display?: Maybe<StringQueryOperatorInput>
   icon?: Maybe<StringQueryOperatorInput>
-  pathToConfigModule?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
 }
 
@@ -2544,6 +2542,7 @@ export type SitePluginPluginOptionsPlugins = {
   version?: Maybe<Scalars["String"]>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>
   browserAPIs?: Maybe<Array<Maybe<Scalars["String"]>>>
+  ssrAPIs?: Maybe<Array<Maybe<Scalars["String"]>>>
   pluginFilepath?: Maybe<Scalars["String"]>
 }
 
@@ -2554,6 +2553,7 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   version?: Maybe<StringQueryOperatorInput>
   pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>
   browserAPIs?: Maybe<StringQueryOperatorInput>
+  ssrAPIs?: Maybe<StringQueryOperatorInput>
   pluginFilepath?: Maybe<StringQueryOperatorInput>
 }
 
@@ -2687,7 +2687,7 @@ export type BlogPostBySlugQuery = { __typename?: "Query" } & {
   markdownRemark: Maybe<
     { __typename?: "MarkdownRemark" } & Pick<
       MarkdownRemark,
-      "id" | "excerpt" | "html" | "tableOfContents"
+      "id" | "excerpt" | "html" | "htmlAst" | "tableOfContents"
     > & {
         frontmatter: Maybe<
           { __typename?: "MarkdownRemarkFrontmatter" } & Pick<

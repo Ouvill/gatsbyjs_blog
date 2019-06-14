@@ -1,18 +1,25 @@
 import React from "react"
 import { Link, graphql, PageRendererProps } from "gatsby"
+import unified from "unified"
+import rehypeReact from "rehype-react"
 
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
 import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 import { Paper, Theme, Box, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
+import Counter from "../components/Counter"
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { "interactive-counter": Counter },
+}).Compiler
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
-    maxWidth: "720px",
+    maxWidth: "760px",
     padding: "16px",
     position: "relative",
     margin: "0 auto",
@@ -24,9 +31,18 @@ const BlogContents = styled.div`
 `
 
 const TOC = styled(Paper)`
+  max-height: calc(80vh - 100px);
   position: sticky;
   top: 100px;
+
+  margin: 0 ${props => props.theme.spacing(2)}px;
   padding: ${props => props.theme.spacing(3)}px;
+  overflow-y: auto;
+
+  * {
+    font-family: "serif";
+    color: ${props => props.theme.palette.secondary.dark};
+  }
 `
 
 interface NavNove {
@@ -52,7 +68,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
 
-  if (post && post.frontmatter && post.html) {
+  if (post && post.frontmatter) {
     return (
       <Layout location={props.location} title={siteTitle}>
         <SEO
@@ -60,7 +76,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
           description={post.frontmatter.description || post.excerpt}
         />
         <Grid container direction="row-reverse" justify="space-around">
-          <Grid item md={3}>
+          <Grid item xs={12} md={3}>
             <TOC>
               {props.data.markdownRemark!.tableOfContents && (
                 <div
@@ -71,25 +87,23 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               )}
             </TOC>
           </Grid>
-          <Grid item md={6}>
+          <Grid item xs={12} md={6}>
             <Paper className={classes.paper}>
               <h1>{post.frontmatter.title}</h1>
               <p
                 style={{
-                  ...scale(-1 / 5),
                   display: `block`,
-                  marginBottom: rhythm(1),
-                  marginTop: rhythm(-1),
                 }}
               >
                 {post.frontmatter.date}
               </p>
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
-              <hr
-                style={{
-                  marginBottom: rhythm(1),
-                }}
-              />
+              {/* {renderAst(post.htmlAst)} */}
+              {post.html ? (
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              ) : (
+                <div>記事データがありません</div>
+              )}
+              <hr style={{}} />
               <Bio />
 
               <ul
@@ -118,7 +132,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               </ul>
             </Paper>
           </Grid>
-          <Grid item md={3}></Grid>
+          <Grid item xs={12} md={3}></Grid>
         </Grid>
       </Layout>
     )
@@ -145,6 +159,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      htmlAst
       tableOfContents
       frontmatter {
         title
