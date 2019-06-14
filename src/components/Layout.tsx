@@ -1,10 +1,16 @@
 import React from "react"
 import { Link, PageRendererProps } from "gatsby"
-// import { ThemeProvider } from "@material-ui/styles"
+import { ThemeProvider as MaterialThemeProvider } from "@material-ui/styles"
 import { theme, siteStyle } from "./theme"
 import { Typography, Theme, makeStyles } from "@material-ui/core"
 import { relative } from "path"
-import styled, { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+`
 
 const Header = styled.header`
   position: relative;
@@ -119,17 +125,20 @@ const Layout: React.FC<LayoutProps> = props => {
     )
   }
   return (
-    <ThemeProvider theme={theme}>
-      <Root className={classes.root}>
-        <Header>{header}</Header>
-        <Main>{children}</Main>
-        <footer>
-          Â© {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </Root>
-    </ThemeProvider>
+    <MaterialThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Root className={classes.root}>
+          <GlobalStyle />
+          <Header>{header}</Header>
+          <Main>{children}</Main>
+          <footer>
+            Â© {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </Root>
+      </ThemeProvider>
+    </MaterialThemeProvider>
   )
 }
 

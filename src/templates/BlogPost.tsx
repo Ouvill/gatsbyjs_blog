@@ -34,12 +34,14 @@ const TOC = styled(Paper)`
   max-height: calc(80vh - 100px);
   position: sticky;
   top: 100px;
+
+  margin: 0 ${props => props.theme.spacing(2)}px;
   padding: ${props => props.theme.spacing(3)}px;
   overflow-y: auto;
 
   * {
     font-family: "serif";
-    color: blue;
+    color: ${props => props.theme.palette.secondary.dark};
   }
 `
 
@@ -74,7 +76,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
           description={post.frontmatter.description || post.excerpt}
         />
         <Grid container direction="row-reverse" justify="space-around">
-          <Grid item md={3}>
+          <Grid item xs={12} md={3}>
             <TOC>
               {props.data.markdownRemark!.tableOfContents && (
                 <div
@@ -85,7 +87,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               )}
             </TOC>
           </Grid>
-          <Grid item md={6}>
+          <Grid item xs={12} md={6}>
             <Paper className={classes.paper}>
               <h1>{post.frontmatter.title}</h1>
               <p
@@ -95,8 +97,12 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               >
                 {post.frontmatter.date}
               </p>
-              {renderAst(post.htmlAst)}
-              {/* <div dangerouslySetInnerHTML={{ __html: post.html }} /> */}
+              {/* {renderAst(post.htmlAst)} */}
+              {post.html ? (
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              ) : (
+                <div>記事データがありません</div>
+              )}
               <hr style={{}} />
               <Bio />
 
@@ -126,7 +132,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               </ul>
             </Paper>
           </Grid>
-          <Grid item md={3}></Grid>
+          <Grid item xs={12} md={3}></Grid>
         </Grid>
       </Layout>
     )
@@ -152,6 +158,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
+      html
       htmlAst
       tableOfContents
       frontmatter {
