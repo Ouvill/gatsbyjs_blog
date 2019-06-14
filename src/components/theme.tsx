@@ -7,10 +7,16 @@ export const siteStyle = {
 
 const default_theme = createMuiTheme({
   palette: {
+    primary: {
+      main: "#f8bbd0",
+    },
+    secondary: {
+      main: "#9ccc65",
+    },
     text: {
       primary: "#333333",
     },
   },
 })
 
-export const theme = responsiveFontSizes(default_theme)
+export const theme = default_theme

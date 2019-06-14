@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: 320,
     borderRadius: "1rem",
     height: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   cardAction: {
     height: "100%",
@@ -127,6 +129,11 @@ export default Indexes
 
 export const pageQuery = graphql`
   query Indexes($index: Int!, $defaultCover: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     file(absolutePath: { eq: $defaultCover }) {
       childImageSharp {
         fluid(maxWidth: 640, maxHeight: 400) {
@@ -160,11 +167,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
       }
     }
   }

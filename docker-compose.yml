@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  # codegen:
+  #   image: node
+  #   depends_on:
+  #     - dev
+
+  dev:
+    image: node
+    volumes:
+      - ./:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    command: "yarn start"

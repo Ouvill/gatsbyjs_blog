@@ -1,21 +1,66 @@
 import React from "react"
 import { Link, PageRendererProps } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
-import { ThemeProvider } from "@material-ui/styles"
+// import { ThemeProvider } from "@material-ui/styles"
 import { theme, siteStyle } from "./theme"
 import { Typography, Theme, makeStyles } from "@material-ui/core"
+import { relative } from "path"
+import styled, { ThemeProvider } from "styled-components"
+
+const Header = styled.header`
+  position: relative;
+  z-index: 0;
+  height: 320px;
+  color: ${props => props.theme.palette.text.primary};
+  background: ${props => props.theme.palette.primary.main};
+`
+
+const InnerHeader = styled.div`
+  color: white;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:before {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    content: "";
+    background-color: ${props => props.theme.palette.primary.main};
+  }
+`
+
+const Main = styled.main`
+  position: relative;
+  z-index: 1;
+`
+
+const Root = styled.div`
+  position: relative;
+  width: "100%";
+  min-height: "100vh";
+  background-color: ${props => props.theme.palette.background.default};
+`
 
 const useStyle = makeStyles((theme: Theme) => ({
   root: {
     width: "100%",
     minHeight: "100vh",
-    backgroundColor: siteStyle.backgroundColor,
+    backgroundColor: theme.palette.background.default,
   },
 
   main: {
-    maxWidth: siteStyle.maxWidth,
+    display: "relative",
     marginLeft: `auto`,
     marginRight: `auto`,
+  },
+
+  title: {
+    textAlign: "center",
   },
 }))
 
@@ -31,56 +76,62 @@ const Layout: React.FC<LayoutProps> = props => {
 
   if (location.pathname === rootPath || location.pathname.match(/indexes/)) {
     header = (
-      <Typography
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
+      <InnerHeader>
+        <Typography
+          className={classes.title}
           style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
+            ...scale(1.5),
+            marginTop: "48px",
           }}
-          to={`/`}
         >
-          {title}
-        </Link>
-      </Typography>
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/`}
+          >
+            {title}
+          </Link>
+        </Typography>
+      </InnerHeader>
     )
   } else {
     header = (
-      <Typography
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
+      <InnerHeader>
+        <Typography
           style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
+            fontFamily: `Montserrat, sans-serif`,
+            marginTop: 0,
           }}
-          to={`/`}
         >
-          {title}
-        </Link>
-      </Typography>
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/`}
+          >
+            {title}
+          </Link>
+        </Typography>
+      </InnerHeader>
     )
   }
   return (
-    <div className={classes.root}>
-      <header>{header}</header>
-      <main className={classes.main}>{children}</main>
-      <footer>
-        Â© {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Root className={classes.root}>
+        <Header>{header}</Header>
+        <Main>{children}</Main>
+        <footer>
+          Â© {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        </footer>
+      </Root>
+    </ThemeProvider>
   )
 }
 
