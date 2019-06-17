@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, PageRendererProps } from "gatsby"
-import { ThemeProvider as MaterialThemeProvider } from "@material-ui/styles"
+import {
+  ThemeProvider as MaterialThemeProvider,
+  StylesProvider,
+} from "@material-ui/styles"
 import { theme, siteStyle } from "./theme"
 import { Typography, Theme, makeStyles } from "@material-ui/core"
 import { relative } from "path"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
+import Footer from "./Footer"
+import Fade from "./PoseFade"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -12,9 +17,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.palette.primary.dark};
+    color: ${props => props.theme.palette.secondary.dark};
     &:hover {
-       color: ${props => props.theme.palette.secondary.dark}
+       color: ${props => props.theme.palette.secondary.main}
       }
     }
   }
@@ -84,7 +89,7 @@ interface LayoutProps extends PageRendererProps {
 const Layout: React.FC<LayoutProps> = props => {
   const classes = useStyle()
   const { location, title, children } = props
-  const rootPath = `${__PATH_PREFIX__}/`
+  const rootPath = `/`
   let header
 
   if (location.pathname === rootPath || location.pathname.match(/indexes/)) {
@@ -95,6 +100,7 @@ const Layout: React.FC<LayoutProps> = props => {
           style={{
             marginTop: "48px",
           }}
+          variant="h4"
         >
           <Link
             style={{
@@ -133,20 +139,20 @@ const Layout: React.FC<LayoutProps> = props => {
     )
   }
   return (
-    <MaterialThemeProvider theme={theme}>
-      <ThemeProvider theme={theme}>
-        <Root className={classes.root}>
-          <GlobalStyle />
-          <Header>{header}</Header>
-          <Main>{children}</Main>
-          <footer>
-            Â© {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </Root>
-      </ThemeProvider>
-    </MaterialThemeProvider>
+    <StylesProvider injectFirst>
+      <MaterialThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <Root className={classes.root}>
+            <GlobalStyle />
+            <Header>{header}</Header>
+            <Main>
+              <Fade location={location.pathname}>{children}</Fade>
+            </Main>
+            <Footer></Footer>
+          </Root>
+        </ThemeProvider>
+      </MaterialThemeProvider>
+    </StylesProvider>
   )
 }
 

@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   nav: {
     display: "flex",
     justifyContent: "space-between",
+    marginTop: "32px",
   },
 }))
 
@@ -114,16 +115,20 @@ const Indexes: React.FC<IndexesProps> = props => {
             component={Link}
             to={`/indexes/${previous}`}
             disabled={previous == null ? true : false}
+            variant="contained"
+            color="primary"
           >
-            前の10件
+            前
           </Button>
 
           <Button
             component={Link}
             to={`/indexes/${next}`}
             disabled={next == null ? true : false}
+            variant="contained"
+            color="primary"
           >
-            次の10件
+            次
           </Button>
         </div>
       </Wrap>

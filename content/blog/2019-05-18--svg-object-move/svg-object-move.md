@@ -52,7 +52,7 @@ const SVGComponents = () => {
 
 せっかくなので、React Hook を利用しましょう。
 
-```jsx {1,3,4,15,16}
+```jsx{1,3,4,15,16}
 import React, {useState} from "react"
 const SVGComponents = () => {
     const [x, setX] = useState(50); // 追記
@@ -94,7 +94,7 @@ const SVGComponents = () => {
 
 `isMouseDown` という変数を用意し、`onMouseDown`、`onMouseUp` イベントで、`true`、`false` を切り替えます。
 
-```jsx {6-9,11-14,31,32}
+```jsx{6-9,11-14,31,32}
 const SVGComponents = () => {
     const [x, setX] = useState(50); 
     const [y, setY] = useState(50); 
@@ -138,7 +138,7 @@ const SVGComponents = () => {
 `isMouseDown` が `true` のときにマウスを座標を取得します。表示してあるページに対しての、マウスの座標を取得するには `event.pageX`、`event.pageY` を利用します。
 
 
-```jsx {16-23,42}
+```jsx{16-23,42}
 const SVGComponents = () => {
     const [x, setX] = useState(50); 
     const [y, setY] = useState(50); 
@@ -203,7 +203,7 @@ rect の x, y は親要素の svg からの相対位置になります。相対�
 
 svg 要素を参照するために `useRef` を利用します。React Hook で追加されたメソッドです。`ref` で指定した要素にアクセスできます。
 
-```jsx {1,6,25-30,40}
+```jsx{1,6,25-30,40}
 import React, {useState, useRef} from "react"
 const SVGComponents = () => {
     const [x, setX] = useState(50); 
@@ -264,16 +264,16 @@ const SVGComponents = () => {
 
 現在のコンポーネントを表示してみると以下のようになります。マウスが四角形の左上に貼り付いてしまっています。
 
-<!-- <video style="width:100%;" controls>
+<video style="width:100%;" controls>
     <source src="./images/movie1.mp4" type="video/mp4">
    <p>※ご利用のブラウザでは再生することができません。</p>
-</video> -->
+</video>
 
 このままではよくありません。
 
 四角形の左上からマウスまでの位置をギャップとして計算して、マウスが左上に張り付かないように設定しましょう。
 
-```jsx {5,12-15,34-35}
+```jsx{5,12-15,34-35}
 import React, {useState, useRef} from "react"
 const SVGComponents = () => {
     const [x, setX] = useState(50); 
@@ -339,10 +339,10 @@ const SVGComponents = () => {
 
 これを表示させてみると、以下のようになります。
 
-<!-- <video style="width:100%;" controls>
-    <source src="./images/movie1.mp4" type="video/mp4">
+<video style="width:100%;" controls>
+    <source src="./images/movie2.mp4" type="video/mp4">
    <p>※ご利用のブラウザでは再生することができません。</p>
-</video> -->
+</video>
 
 マウスの動きに追従するように、四角形が動いていると思います。
 
