@@ -146,7 +146,7 @@ const Layout: React.FC<LayoutProps> = props => {
             <GlobalStyle />
             <Header>{header}</Header>
             <Main>
-              <Fade location={location.pathname}>{children}</Fade>
+              <Fade>{children}</Fade>
             </Main>
             <Footer></Footer>
           </Root>

@@ -2,13 +2,15 @@ import React from "react"
 import posed, { PoseGroup } from "react-pose"
 import { TransitionState } from "gatsby-plugin-transition-link"
 
-const PoseFade = posed.div({
+const Fade = posed.div({
   enter: {
     opacity: 1,
     delay: 100,
     // beforeChildren: true
   },
-  exit: { opacity: 0 },
+  exit: {
+    opacity: 0,
+  },
 })
 
 // interface FadeProps {}
@@ -32,11 +34,11 @@ const PoseFade = posed.div({
 //   )
 // }
 
-interface FadeProps {
-  location: string
-}
-const Fade: React.FC<FadeProps> = props => {
-  return <PoseFade key={props.location}>{props.children}</PoseFade>
-}
+// interface FadeProps {
+//   key: React.Key
+// }
+// const Fade: React.FC<FadeProps> = props => {
+//   return <PoseFade key={props.key}>{props.children}</PoseFade>
+// }
 
 export default Fade

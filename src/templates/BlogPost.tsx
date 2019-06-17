@@ -130,74 +130,72 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   if (post && post.frontmatter) {
     return (
       <Layout location={props.location} title={siteTitle}>
-        <Fade location={props.location.pathname}>
-          <SEO
-            title={post.frontmatter.title ? post.frontmatter.title : "unnamed"}
-            description={post.frontmatter.description || post.excerpt}
-          />
-          <Grid container direction="row-reverse" justify="space-around">
-            <Grid item xs={12} md={3}>
-              <TOC>
-                <Typography>目次</Typography>
-                {props.data.markdownRemark!.tableOfContents && (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: props.data.markdownRemark!.tableOfContents,
-                    }}
-                  />
-                )}
-              </TOC>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper className={classes.paper}>
-                <h1>{post.frontmatter.title}</h1>
-                <p
-                  style={{
-                    display: `block`,
+        <SEO
+          title={post.frontmatter.title ? post.frontmatter.title : "unnamed"}
+          description={post.frontmatter.description || post.excerpt}
+        />
+        <Grid container direction="row-reverse" justify="space-around">
+          <Grid item xs={12} md={3}>
+            <TOC>
+              <Typography>目次</Typography>
+              {props.data.markdownRemark!.tableOfContents && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: props.data.markdownRemark!.tableOfContents,
                   }}
-                >
-                  {post.frontmatter.date}
-                </p>
-                {/* {renderAst(post.htmlAst)} */}
-                {post.html ? (
-                  <Article>
-                    <div dangerouslySetInnerHTML={{ __html: post.html }} />
-                  </Article>
-                ) : (
-                  <div>記事データがありません</div>
-                )}
-                <hr style={{}} />
-                <Bio />
-
-                <ul
-                  style={{
-                    display: `flex`,
-                    flexWrap: `wrap`,
-                    justifyContent: `space-between`,
-                    listStyle: `none`,
-                    padding: 0,
-                  }}
-                >
-                  <li>
-                    {next && (
-                      <Link to={next.fields.slug} rel="next">
-                        ← {next.frontmatter.title}
-                      </Link>
-                    )}
-                  </li>
-                  <li>
-                    {previous && (
-                      <Link to={previous.fields.slug} rel="prev">
-                        {previous.frontmatter.title} →
-                      </Link>
-                    )}
-                  </li>
-                </ul>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={3}></Grid>
+                />
+              )}
+            </TOC>
           </Grid>
-        </Fade>
+          <Grid item xs={12} md={6}>
+            <Paper className={classes.paper}>
+              <h1>{post.frontmatter.title}</h1>
+              <p
+                style={{
+                  display: `block`,
+                }}
+              >
+                {post.frontmatter.date}
+              </p>
+              {/* {renderAst(post.htmlAst)} */}
+              {post.html ? (
+                <Article>
+                  <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                </Article>
+              ) : (
+                <div>記事データがありません</div>
+              )}
+              <hr style={{}} />
+              <Bio />
+
+              <ul
+                style={{
+                  display: `flex`,
+                  flexWrap: `wrap`,
+                  justifyContent: `space-between`,
+                  listStyle: `none`,
+                  padding: 0,
+                }}
+              >
+                <li>
+                  {next && (
+                    <Link to={next.fields.slug} rel="next">
+                      ← {next.frontmatter.title}
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  {previous && (
+                    <Link to={previous.fields.slug} rel="prev">
+                      {previous.frontmatter.title} →
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={3}></Grid>
+        </Grid>
       </Layout>
     )
   } else {
