@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null
+export type MaybePromise<T> = Promise<T> | T
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -342,6 +343,7 @@ export type DuotoneGradient = {
 export enum ExcerptFormats {
   Plain = "PLAIN",
   Html = "HTML",
+  Markdown = "MARKDOWN",
 }
 
 export type File = Node & {
@@ -716,99 +718,99 @@ export type ImageSharpFixedArgs = {
   width?: Maybe<Scalars["Int"]>
   height?: Maybe<Scalars["Int"]>
   base64Width?: Maybe<Scalars["Int"]>
-  jpegProgressive: Scalars["Boolean"]
-  pngCompressionSpeed: Scalars["Int"]
-  grayscale: Scalars["Boolean"]
+  jpegProgressive?: Maybe<Scalars["Boolean"]>
+  pngCompressionSpeed?: Maybe<Scalars["Int"]>
+  grayscale?: Maybe<Scalars["Boolean"]>
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars["Int"]>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
-  cropFocus: ImageCropFocus
-  fit: ImageFit
-  background: Scalars["String"]
-  rotate: Scalars["Int"]
-  trim: Scalars["Float"]
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+  background?: Maybe<Scalars["String"]>
+  rotate?: Maybe<Scalars["Int"]>
+  trim?: Maybe<Scalars["Float"]>
 }
 
 export type ImageSharpResolutionsArgs = {
   width?: Maybe<Scalars["Int"]>
   height?: Maybe<Scalars["Int"]>
   base64Width?: Maybe<Scalars["Int"]>
-  jpegProgressive: Scalars["Boolean"]
-  pngCompressionSpeed: Scalars["Int"]
-  grayscale: Scalars["Boolean"]
+  jpegProgressive?: Maybe<Scalars["Boolean"]>
+  pngCompressionSpeed?: Maybe<Scalars["Int"]>
+  grayscale?: Maybe<Scalars["Boolean"]>
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars["Int"]>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
-  cropFocus: ImageCropFocus
-  fit: ImageFit
-  background: Scalars["String"]
-  rotate: Scalars["Int"]
-  trim: Scalars["Float"]
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+  background?: Maybe<Scalars["String"]>
+  rotate?: Maybe<Scalars["Int"]>
+  trim?: Maybe<Scalars["Float"]>
 }
 
 export type ImageSharpFluidArgs = {
   maxWidth?: Maybe<Scalars["Int"]>
   maxHeight?: Maybe<Scalars["Int"]>
   base64Width?: Maybe<Scalars["Int"]>
-  grayscale: Scalars["Boolean"]
-  jpegProgressive: Scalars["Boolean"]
-  pngCompressionSpeed: Scalars["Int"]
+  grayscale?: Maybe<Scalars["Boolean"]>
+  jpegProgressive?: Maybe<Scalars["Boolean"]>
+  pngCompressionSpeed?: Maybe<Scalars["Int"]>
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars["Int"]>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
-  cropFocus: ImageCropFocus
-  fit: ImageFit
-  background: Scalars["String"]
-  rotate: Scalars["Int"]
-  trim: Scalars["Float"]
-  sizes: Scalars["String"]
-  srcSetBreakpoints: Array<Maybe<Scalars["Int"]>>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+  background?: Maybe<Scalars["String"]>
+  rotate?: Maybe<Scalars["Int"]>
+  trim?: Maybe<Scalars["Float"]>
+  sizes?: Maybe<Scalars["String"]>
+  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars["Int"]>>>
 }
 
 export type ImageSharpSizesArgs = {
   maxWidth?: Maybe<Scalars["Int"]>
   maxHeight?: Maybe<Scalars["Int"]>
   base64Width?: Maybe<Scalars["Int"]>
-  grayscale: Scalars["Boolean"]
-  jpegProgressive: Scalars["Boolean"]
-  pngCompressionSpeed: Scalars["Int"]
+  grayscale?: Maybe<Scalars["Boolean"]>
+  jpegProgressive?: Maybe<Scalars["Boolean"]>
+  pngCompressionSpeed?: Maybe<Scalars["Int"]>
   duotone?: Maybe<DuotoneGradient>
   traceSVG?: Maybe<Potrace>
   quality?: Maybe<Scalars["Int"]>
-  toFormat: ImageFormat
-  toFormatBase64: ImageFormat
-  cropFocus: ImageCropFocus
-  fit: ImageFit
-  background: Scalars["String"]
-  rotate: Scalars["Int"]
-  trim: Scalars["Float"]
-  sizes: Scalars["String"]
-  srcSetBreakpoints: Array<Maybe<Scalars["Int"]>>
+  toFormat?: Maybe<ImageFormat>
+  toFormatBase64?: Maybe<ImageFormat>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+  background?: Maybe<Scalars["String"]>
+  rotate?: Maybe<Scalars["Int"]>
+  trim?: Maybe<Scalars["Float"]>
+  sizes?: Maybe<Scalars["String"]>
+  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars["Int"]>>>
 }
 
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars["Int"]>
   height?: Maybe<Scalars["Int"]>
   quality?: Maybe<Scalars["Int"]>
-  jpegProgressive: Scalars["Boolean"]
-  pngCompressionLevel: Scalars["Int"]
-  pngCompressionSpeed: Scalars["Int"]
-  grayscale: Scalars["Boolean"]
+  jpegProgressive?: Maybe<Scalars["Boolean"]>
+  pngCompressionLevel?: Maybe<Scalars["Int"]>
+  pngCompressionSpeed?: Maybe<Scalars["Int"]>
+  grayscale?: Maybe<Scalars["Boolean"]>
   duotone?: Maybe<DuotoneGradient>
-  base64: Scalars["Boolean"]
+  base64?: Maybe<Scalars["Boolean"]>
   traceSVG?: Maybe<Potrace>
-  toFormat: ImageFormat
-  cropFocus: ImageCropFocus
-  fit: ImageFit
-  background: Scalars["String"]
-  rotate: Scalars["Int"]
-  trim: Scalars["Float"]
+  toFormat?: Maybe<ImageFormat>
+  cropFocus?: Maybe<ImageCropFocus>
+  fit?: Maybe<ImageFit>
+  background?: Maybe<Scalars["String"]>
+  rotate?: Maybe<Scalars["Int"]>
+  trim?: Maybe<Scalars["Float"]>
 }
 
 export type ImageSharpConnection = {
@@ -1235,14 +1237,14 @@ export type MarkdownRemark = Node & {
 }
 
 export type MarkdownRemarkExcerptArgs = {
-  pruneLength: Scalars["Int"]
-  truncate: Scalars["Boolean"]
-  format: ExcerptFormats
+  pruneLength?: Maybe<Scalars["Int"]>
+  truncate?: Maybe<Scalars["Boolean"]>
+  format?: Maybe<ExcerptFormats>
 }
 
 export type MarkdownRemarkExcerptAstArgs = {
-  pruneLength: Scalars["Int"]
-  truncate: Scalars["Boolean"]
+  pruneLength?: Maybe<Scalars["Int"]>
+  truncate?: Maybe<Scalars["Boolean"]>
 }
 
 export type MarkdownRemarkHeadingsArgs = {
@@ -1250,7 +1252,7 @@ export type MarkdownRemarkHeadingsArgs = {
 }
 
 export type MarkdownRemarkTableOfContentsArgs = {
-  pathToSlugField: Scalars["String"]
+  pathToSlugField?: Maybe<Scalars["String"]>
   maxDepth?: Maybe<Scalars["Int"]>
   heading?: Maybe<Scalars["String"]>
 }
@@ -1516,7 +1518,6 @@ export type MarkdownRemarkSortInput = {
 
 /** Node Interface */
 export type Node = {
-  __typename?: "Node"
   id: Scalars["ID"]
   parent?: Maybe<Node>
   children: Array<Node>
@@ -2166,6 +2167,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsName = "pluginCreator___pluginOptions___name",
   PluginCreatorPluginOptionsMaxWidth = "pluginCreator___pluginOptions___maxWidth",
   PluginCreatorPluginOptionsWrapperStyle = "pluginCreator___pluginOptions___wrapperStyle",
+  PluginCreatorPluginOptionsNoInlineHighlight = "pluginCreator___pluginOptions___noInlineHighlight",
   PluginCreatorPluginOptionsShortName = "pluginCreator___pluginOptions___short_name",
   PluginCreatorPluginOptionsStartUrl = "pluginCreator___pluginOptions___start_url",
   PluginCreatorPluginOptionsBackgroundColor = "pluginCreator___pluginOptions___background_color",
@@ -2369,6 +2371,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsVersion = "pluginOptions___plugins___version",
   PluginOptionsPluginsPluginOptionsMaxWidth = "pluginOptions___plugins___pluginOptions___maxWidth",
   PluginOptionsPluginsPluginOptionsWrapperStyle = "pluginOptions___plugins___pluginOptions___wrapperStyle",
+  PluginOptionsPluginsPluginOptionsNoInlineHighlight = "pluginOptions___plugins___pluginOptions___noInlineHighlight",
   PluginOptionsPluginsBrowserApIs = "pluginOptions___plugins___browserAPIs",
   PluginOptionsPluginsSsrApIs = "pluginOptions___plugins___ssrAPIs",
   PluginOptionsPluginsPluginFilepath = "pluginOptions___plugins___pluginFilepath",
@@ -2376,6 +2379,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsName = "pluginOptions___name",
   PluginOptionsMaxWidth = "pluginOptions___maxWidth",
   PluginOptionsWrapperStyle = "pluginOptions___wrapperStyle",
+  PluginOptionsNoInlineHighlight = "pluginOptions___noInlineHighlight",
   PluginOptionsShortName = "pluginOptions___short_name",
   PluginOptionsStartUrl = "pluginOptions___start_url",
   PluginOptionsBackgroundColor = "pluginOptions___background_color",
@@ -2510,6 +2514,7 @@ export type SitePluginPluginOptions = {
   name?: Maybe<Scalars["String"]>
   maxWidth?: Maybe<Scalars["Int"]>
   wrapperStyle?: Maybe<Scalars["String"]>
+  noInlineHighlight?: Maybe<Scalars["Boolean"]>
   short_name?: Maybe<Scalars["String"]>
   start_url?: Maybe<Scalars["String"]>
   background_color?: Maybe<Scalars["String"]>
@@ -2525,6 +2530,7 @@ export type SitePluginPluginOptionsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
+  noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
   short_name?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
@@ -2565,11 +2571,13 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   __typename?: "SitePluginPluginOptionsPluginsPluginOptions"
   maxWidth?: Maybe<Scalars["Int"]>
   wrapperStyle?: Maybe<Scalars["String"]>
+  noInlineHighlight?: Maybe<Scalars["Boolean"]>
 }
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
+  noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
 }
 
 export type SitePluginSortInput = {
