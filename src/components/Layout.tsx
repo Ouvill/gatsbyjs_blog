@@ -95,13 +95,7 @@ const Layout: React.FC<LayoutProps> = props => {
   if (location.pathname === rootPath || location.pathname.match(/indexes/)) {
     header = (
       <InnerHeader>
-        <Typography
-          className={classes.title}
-          style={{
-            marginTop: "48px",
-          }}
-          variant="h4"
-        >
+        <Typography className={classes.title} variant="h4">
           <Link
             style={{
               boxShadow: `none`,
@@ -120,9 +114,9 @@ const Layout: React.FC<LayoutProps> = props => {
       <InnerHeader>
         <Typography
           style={{
-            fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
           }}
+          variant="h4"
         >
           <Link
             style={{
