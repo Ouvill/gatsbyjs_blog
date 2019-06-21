@@ -7,7 +7,6 @@ import { ContactPageQuery } from "../graphqlTypes"
 import { Formik } from "formik"
 import styled from "styled-components"
 import axios from "axios"
-import console = require("console")
 
 const initialInputs = {
   name: "",
