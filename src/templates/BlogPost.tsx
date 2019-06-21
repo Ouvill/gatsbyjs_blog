@@ -3,6 +3,7 @@ import { Link, graphql, PageRendererProps } from "gatsby"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import unified from "unified"
 import rehypeReact from "rehype-react"
+import url from "url"
 
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
@@ -145,6 +146,26 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
 
+  const genFullPath = () => {
+    if (
+      props.data.site &&
+      props.data.site.siteMetadata &&
+      props.data.site.siteMetadata.siteUrl &&
+      props.data.markdownRemark &&
+      props.data.markdownRemark.fields &&
+      props.data.markdownRemark.fields.slug
+    ) {
+      return (
+        props.data.site.siteMetadata.siteUrl +
+        props.data.markdownRemark.fields.slug
+      )
+    } else {
+      return ""
+    }
+  }
+
+  const fullPath = genFullPath()
+
   if (post && post.frontmatter) {
     return (
       <Layout location={props.location} title={siteTitle}>
@@ -188,7 +209,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               <Share
                 title={`${post.frontmatter.title &&
                   post.frontmatter.title} | ${siteTitle}`}
-                url={location.href}
+                url={fullPath}
               ></Share>
 
               <Bio />
@@ -243,11 +264,15 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
+      fields {
+        slug
+      }
       html
       htmlAst
       tableOfContents

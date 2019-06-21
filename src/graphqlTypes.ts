@@ -2167,14 +2167,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsName = "pluginCreator___pluginOptions___name",
   PluginCreatorPluginOptionsMaxWidth = "pluginCreator___pluginOptions___maxWidth",
   PluginCreatorPluginOptionsWrapperStyle = "pluginCreator___pluginOptions___wrapperStyle",
-  PluginCreatorPluginOptionsBackgroundColor = "pluginCreator___pluginOptions___backgroundColor",
-  PluginCreatorPluginOptionsLinkImagesToOriginal = "pluginCreator___pluginOptions___linkImagesToOriginal",
-  PluginCreatorPluginOptionsShowCaptions = "pluginCreator___pluginOptions___showCaptions",
-  PluginCreatorPluginOptionsPathPrefix = "pluginCreator___pluginOptions___pathPrefix",
-  PluginCreatorPluginOptionsWithWebp = "pluginCreator___pluginOptions___withWebp",
-  PluginCreatorPluginOptionsTracedSvg = "pluginCreator___pluginOptions___tracedSVG",
   PluginCreatorPluginOptionsNoInlineHighlight = "pluginCreator___pluginOptions___noInlineHighlight",
-  PluginCreatorPluginOptionsIgnoreFileExtensions = "pluginCreator___pluginOptions___ignoreFileExtensions",
   PluginCreatorPluginOptionsShortName = "pluginCreator___pluginOptions___short_name",
   PluginCreatorPluginOptionsStartUrl = "pluginCreator___pluginOptions___start_url",
   PluginCreatorPluginOptionsBackgroundColor = "pluginCreator___pluginOptions___background_color",
@@ -2378,14 +2371,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsVersion = "pluginOptions___plugins___version",
   PluginOptionsPluginsPluginOptionsMaxWidth = "pluginOptions___plugins___pluginOptions___maxWidth",
   PluginOptionsPluginsPluginOptionsWrapperStyle = "pluginOptions___plugins___pluginOptions___wrapperStyle",
-  PluginOptionsPluginsPluginOptionsBackgroundColor = "pluginOptions___plugins___pluginOptions___backgroundColor",
-  PluginOptionsPluginsPluginOptionsLinkImagesToOriginal = "pluginOptions___plugins___pluginOptions___linkImagesToOriginal",
-  PluginOptionsPluginsPluginOptionsShowCaptions = "pluginOptions___plugins___pluginOptions___showCaptions",
-  PluginOptionsPluginsPluginOptionsPathPrefix = "pluginOptions___plugins___pluginOptions___pathPrefix",
-  PluginOptionsPluginsPluginOptionsWithWebp = "pluginOptions___plugins___pluginOptions___withWebp",
-  PluginOptionsPluginsPluginOptionsTracedSvg = "pluginOptions___plugins___pluginOptions___tracedSVG",
   PluginOptionsPluginsPluginOptionsNoInlineHighlight = "pluginOptions___plugins___pluginOptions___noInlineHighlight",
-  PluginOptionsPluginsPluginOptionsIgnoreFileExtensions = "pluginOptions___plugins___pluginOptions___ignoreFileExtensions",
   PluginOptionsPluginsBrowserApIs = "pluginOptions___plugins___browserAPIs",
   PluginOptionsPluginsSsrApIs = "pluginOptions___plugins___ssrAPIs",
   PluginOptionsPluginsPluginFilepath = "pluginOptions___plugins___pluginFilepath",
@@ -2393,14 +2379,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsName = "pluginOptions___name",
   PluginOptionsMaxWidth = "pluginOptions___maxWidth",
   PluginOptionsWrapperStyle = "pluginOptions___wrapperStyle",
-  PluginOptionsBackgroundColor = "pluginOptions___backgroundColor",
-  PluginOptionsLinkImagesToOriginal = "pluginOptions___linkImagesToOriginal",
-  PluginOptionsShowCaptions = "pluginOptions___showCaptions",
-  PluginOptionsPathPrefix = "pluginOptions___pathPrefix",
-  PluginOptionsWithWebp = "pluginOptions___withWebp",
-  PluginOptionsTracedSvg = "pluginOptions___tracedSVG",
   PluginOptionsNoInlineHighlight = "pluginOptions___noInlineHighlight",
-  PluginOptionsIgnoreFileExtensions = "pluginOptions___ignoreFileExtensions",
   PluginOptionsShortName = "pluginOptions___short_name",
   PluginOptionsStartUrl = "pluginOptions___start_url",
   PluginOptionsBackgroundColor = "pluginOptions___background_color",
@@ -2535,14 +2514,7 @@ export type SitePluginPluginOptions = {
   name?: Maybe<Scalars["String"]>
   maxWidth?: Maybe<Scalars["Int"]>
   wrapperStyle?: Maybe<Scalars["String"]>
-  backgroundColor?: Maybe<Scalars["String"]>
-  linkImagesToOriginal?: Maybe<Scalars["Boolean"]>
-  showCaptions?: Maybe<Scalars["Boolean"]>
-  pathPrefix?: Maybe<Scalars["String"]>
-  withWebp?: Maybe<Scalars["Boolean"]>
-  tracedSVG?: Maybe<Scalars["Boolean"]>
   noInlineHighlight?: Maybe<Scalars["Boolean"]>
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars["String"]>>>
   short_name?: Maybe<Scalars["String"]>
   start_url?: Maybe<Scalars["String"]>
   background_color?: Maybe<Scalars["String"]>
@@ -2558,14 +2530,7 @@ export type SitePluginPluginOptionsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>
   maxWidth?: Maybe<IntQueryOperatorInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
-  backgroundColor?: Maybe<StringQueryOperatorInput>
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>
-  showCaptions?: Maybe<BooleanQueryOperatorInput>
-  pathPrefix?: Maybe<StringQueryOperatorInput>
-  withWebp?: Maybe<BooleanQueryOperatorInput>
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>
   short_name?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
@@ -2606,27 +2571,13 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   __typename?: "SitePluginPluginOptionsPluginsPluginOptions"
   maxWidth?: Maybe<Scalars["Int"]>
   wrapperStyle?: Maybe<Scalars["String"]>
-  backgroundColor?: Maybe<Scalars["String"]>
-  linkImagesToOriginal?: Maybe<Scalars["Boolean"]>
-  showCaptions?: Maybe<Scalars["Boolean"]>
-  pathPrefix?: Maybe<Scalars["String"]>
-  withWebp?: Maybe<Scalars["Boolean"]>
-  tracedSVG?: Maybe<Scalars["Boolean"]>
   noInlineHighlight?: Maybe<Scalars["Boolean"]>
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars["String"]>>>
 }
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>
   wrapperStyle?: Maybe<StringQueryOperatorInput>
-  backgroundColor?: Maybe<StringQueryOperatorInput>
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>
-  showCaptions?: Maybe<BooleanQueryOperatorInput>
-  pathPrefix?: Maybe<StringQueryOperatorInput>
-  withWebp?: Maybe<BooleanQueryOperatorInput>
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>
   noInlineHighlight?: Maybe<BooleanQueryOperatorInput>
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginSortInput = {
@@ -2748,7 +2699,7 @@ export type BlogPostBySlugQuery = { __typename?: "Query" } & {
       siteMetadata: Maybe<
         { __typename?: "SiteSiteMetadata" } & Pick<
           SiteSiteMetadata,
-          "title" | "author"
+          "title" | "author" | "siteUrl"
         >
       >
     }
@@ -2758,6 +2709,12 @@ export type BlogPostBySlugQuery = { __typename?: "Query" } & {
       MarkdownRemark,
       "id" | "excerpt" | "html" | "htmlAst" | "tableOfContents"
     > & {
+        fields: Maybe<
+          { __typename?: "MarkdownRemarkFields" } & Pick<
+            MarkdownRemarkFields,
+            "slug"
+          >
+        >
         frontmatter: Maybe<
           { __typename?: "MarkdownRemarkFrontmatter" } & Pick<
             MarkdownRemarkFrontmatter,
