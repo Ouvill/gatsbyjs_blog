@@ -2738,6 +2738,18 @@ export type NotFoundPageQuery = { __typename?: "Query" } & {
   >
 }
 
+export type ContactPageQueryVariables = {}
+
+export type ContactPageQuery = { __typename?: "Query" } & {
+  site: Maybe<
+    { __typename?: "Site" } & {
+      siteMetadata: Maybe<
+        { __typename?: "SiteSiteMetadata" } & Pick<SiteSiteMetadata, "title">
+      >
+    }
+  >
+}
+
 export type BlogPostBySlugQueryVariables = {
   slug: Scalars["String"]
 }
