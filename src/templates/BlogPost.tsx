@@ -12,8 +12,7 @@ import { Paper, Theme, Box, Grid, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
 import Counter from "../components/Counter"
-// import Fade from "../components/Fade"
-import Fade from "../components/PoseFade"
+import Share from "../components/Share"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -42,6 +41,7 @@ const TOC = styled(Paper)`
   @media (max-width: ${props => props.theme.breakpoints.values.md}px) {
     margin: 0 0 ${props => props.theme.spacing(2)}px 0;
   }
+
   padding: ${props => props.theme.spacing(3)}px;
   overflow-y: auto;
 
@@ -64,6 +64,7 @@ const TOC = styled(Paper)`
     padding: 0 ${props => props.theme.spacing(2)}px;
   }
 `
+
 const Article = styled.div`
   .gatsby-highlight-code-line {
     background-color: #feb;
@@ -166,6 +167,13 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
                 <div>記事データがありません</div>
               )}
               <hr style={{}} />
+
+              <Share
+                title={`${post.frontmatter.title &&
+                  post.frontmatter.title} | ${siteTitle}`}
+                url={location.href}
+              ></Share>
+
               <Bio />
 
               <ul
