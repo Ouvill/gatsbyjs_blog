@@ -64,7 +64,13 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                 }}
               >
                 {({ handleSubmit, handleChange, values, isSubmitting }) => (
-                  <Form onSubmit={handleSubmit}>
+                  <Form
+                    onSubmit={handleSubmit}
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                  >
+                    {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+                    <input type="hidden" name="form-name" value="contact" />
                     <TextField
                       name="name"
                       value={values.name}
