@@ -59,9 +59,15 @@ const Main = styled.main`
 
 const Root = styled.div`
   position: relative;
-  width: "100%";
-  min-height: "100vh";
+  width: auto;
+  min-height: 100vh;
   background-color: ${props => props.theme.palette.background.default};
+`
+
+const Content = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 `
 
 const useStyle = makeStyles((theme: Theme) => ({
@@ -138,11 +144,13 @@ const Layout: React.FC<LayoutProps> = props => {
         <ThemeProvider theme={theme}>
           <Root className={classes.root}>
             <GlobalStyle />
-            <Header>{header}</Header>
-            <Main>
-              <Fade>{children}</Fade>
-            </Main>
-            <Footer></Footer>
+            <Content>
+              <Header>{header}</Header>
+              <Main>
+                <Fade>{children}</Fade>
+              </Main>
+              <Footer></Footer>
+            </Content>
           </Root>
         </ThemeProvider>
       </MaterialThemeProvider>
