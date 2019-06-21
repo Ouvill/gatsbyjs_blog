@@ -54,12 +54,20 @@
     "unified": "^7.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
     "@graphql-codegen/cli": "^1.2.1",
     "@graphql-codegen/typescript": "^1.2.1",
     "@graphql-codegen/typescript-operations": "^1.2.1",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
     "@types/typography": "^0.16.2",
+    "babel-loader": "^8.0.6",
     "graphql": "^14.3.1",
     "prettier": "^1.18.2",
+    "react-docgen-typescript-loader": "^3.1.0",
     "typescript": "^3.5.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -79,6 +87,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "codegen": "graphql-codegen  --config codegen.yml"
+    "codegen": "graphql-codegen  --config codegen.yml",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
