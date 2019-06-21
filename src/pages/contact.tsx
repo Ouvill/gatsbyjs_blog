@@ -52,7 +52,7 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                 validate={values => {}}
                 onSubmit={(values, { setSubmitting }) => {
                   axios({
-                    url: "/",
+                    url: "/?no-cache=1",
                     method: "post",
                     headers: {
                       "content-type": "application/x-www-form-urlencoded",
