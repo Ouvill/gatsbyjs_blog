@@ -115,7 +115,7 @@ const Indexes: React.FC<IndexesProps> = props => {
             component={Link}
             to={`/indexes/${previous}`}
             disabled={previous == null ? true : false}
-            variant="contained"
+            variant="outlined"
             color="primary"
           >
             前
@@ -125,8 +125,8 @@ const Indexes: React.FC<IndexesProps> = props => {
             component={Link}
             to={`/indexes/${next}`}
             disabled={next == null ? true : false}
-            variant="contained"
             color="primary"
+            variant="outlined"
           >
             次
           </Button>
