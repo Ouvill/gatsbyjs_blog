@@ -8,7 +8,7 @@ import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
-import { Paper, Theme, Box, Grid, Typography } from "@material-ui/core"
+import { Paper, Theme, Box, Grid, Typography, Hidden } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
 import Counter from "../components/Counter"
@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "16px",
     position: "relative",
     margin: "0 auto",
+  },
+  sideMenu: {
+    display: "flex",
+    alignItems: "flex-end",
   },
 }))
 
@@ -103,6 +107,19 @@ const Article = styled.div`
     float: left; /* 1 */
     min-width: 100%; /* 2 */
   }
+`
+
+const Img = styled.img`
+  position: sticky;
+  bottom: 5%;
+  width: 50%;
+  max-height: 40%;
+  opacity: 0.3;
+  margin: 0 auto;
+
+  /* background-image: url("/cherry-blossom-large.svg");
+  background-repeat: no-repeat;
+  background-position-y: 100px; */
 `
 
 interface NavNove {
@@ -202,7 +219,11 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               </ul>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={3}></Grid>
+          <Grid item xs={12} md={3} className={classes.sideMenu}>
+            <Hidden smDown>
+              <Img src="/cherry-blossom-large.svg"></Img>
+            </Hidden>
+          </Grid>
         </Grid>
       </Layout>
     )
