@@ -192,7 +192,6 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               ></Share>
 
               <Bio />
-
               <ul
                 style={{
                   display: `flex`,
