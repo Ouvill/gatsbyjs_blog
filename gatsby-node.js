@@ -5,6 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   await createBlogPosts(graphql, createPage)
+  await createStaticPages(graphql, createPage)
   await createIndexPage(graphql, createPage)
 }
 
@@ -84,6 +85,47 @@ function createIndexPage(graphql, createPage) {
         },
       })
     }
+  })
+}
+
+function createStaticPages(graphql, createPage) {
+  const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
+  return graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/pages/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      console.log(result.errors)
+      throw result.errors
+    }
+    // Create blog posts pages.
+    const posts = result.data.allMarkdownRemark.edges
+    posts.forEach((post, index) => {
+      createPage({
+        path: post.node.fields.slug,
+        component: blogPost,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      })
+    })
+    return null
   })
 }
 
