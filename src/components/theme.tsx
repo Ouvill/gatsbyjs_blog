@@ -8,7 +8,7 @@ export const siteStyle = {
 const default_theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#f8bbd0",
+      main: "#F48FB1",
     },
     secondary: {
       main: "#8BC34A",

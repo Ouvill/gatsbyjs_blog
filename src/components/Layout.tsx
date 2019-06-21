@@ -30,7 +30,7 @@ const Header = styled.header`
   z-index: 0;
   height: 320px;
   color: ${props => props.theme.palette.text.primary};
-  background: ${props => props.theme.palette.primary.main};
+  background: ${props => props.theme.palette.primary.light};
 `
 
 const InnerHeader = styled.div`
@@ -48,7 +48,7 @@ const InnerHeader = styled.div`
     right: 0;
     height: 100px;
     content: "";
-    background-color: ${props => props.theme.palette.primary.main};
+    background-color: ${props => props.theme.palette.primary.light};
   }
 `
 
