@@ -38,18 +38,20 @@ const BlogContents = styled.div`
 `
 
 const TOC = styled(Paper)`
-  max-height: calc(80vh - 100px);
   max-width: 760px;
-  position: sticky;
-  top: 100px;
-
   margin: 0 ${props => props.theme.spacing(2)}px;
+  padding: ${props => props.theme.spacing(2)}px;
+  overflow-y: auto;
+
+  ${props => props.theme.breakpoints.up("md")} {
+    max-height: calc(90vh - 50px);
+    position: sticky;
+    top: 100px;
+  }
+
   @media (max-width: ${props => props.theme.breakpoints.values.md}px) {
     margin: 0 auto ${props => props.theme.spacing(2)}px auto;
   }
-
-  padding: ${props => props.theme.spacing(2)}px;
-  overflow-y: auto;
 
   /* font-family: "serif"; */
   a {
@@ -110,7 +112,7 @@ const Article = styled.div`
     white-space: pre-wrap;
   }
 
-  .gatsby-highlight code[class*="language-"] {
+  code[class*="language-"] {
     /* width: 100%; */
     overflow: initial;
     float: left; /* 1 */
