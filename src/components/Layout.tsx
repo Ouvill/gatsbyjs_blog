@@ -10,6 +10,7 @@ import { relative } from "path"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import Footer from "./Footer"
 import Fade from "./PoseFade"
+import SiteMenu from "./SiteMenu"
 
 const GlobalStyle = createGlobalStyle`
   * { box-sizing:border-box; }
@@ -43,9 +44,7 @@ const InnerHeader = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   &:before {
     position: absolute;
     bottom: -100px;
@@ -55,6 +54,15 @@ const InnerHeader = styled.div`
     content: "";
     background-color: ${props => props.theme.palette.primary.light};
   }
+`
+
+const Center = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const Main = styled.main`
@@ -73,6 +81,13 @@ const Content = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+`
+
+const HeaderTop = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
 `
 
 const useStyle = makeStyles((theme: Theme) => ({
@@ -106,40 +121,50 @@ const Layout: React.FC<LayoutProps> = props => {
   if (location.pathname === rootPath || location.pathname.match(/indexes/)) {
     header = (
       <InnerHeader>
-        <Typography className={classes.title} variant="h4">
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </Typography>
+        <HeaderTop>
+          <SiteMenu></SiteMenu>
+        </HeaderTop>
+        <Center>
+          <Typography className={classes.title} variant="h4">
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `inherit`,
+              }}
+              to={`/`}
+            >
+              {title}
+            </Link>
+          </Typography>
+        </Center>
       </InnerHeader>
     )
   } else {
     header = (
       <InnerHeader>
-        <Typography
-          style={{
-            marginTop: 0,
-          }}
-          variant="h4"
-        >
-          <Link
+        <HeaderTop>
+          <SiteMenu></SiteMenu>
+        </HeaderTop>
+        <Center>
+          <Typography
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              marginTop: 0,
             }}
-            to={`/`}
+            variant="h4"
           >
-            {title}
-          </Link>
-        </Typography>
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `inherit`,
+              }}
+              to={`/`}
+            >
+              {title}
+            </Link>
+          </Typography>
+        </Center>
       </InnerHeader>
     )
   }
