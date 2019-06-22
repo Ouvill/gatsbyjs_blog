@@ -114,10 +114,6 @@ const Article = styled.div`
   }
 
   code[class*="language-"] {
-    /* width: 100%; */
-    overflow: initial;
-    float: left; /* 1 */
-    min-width: 100%; /* 2 */
     white-space: pre-wrap;
   }
 `
