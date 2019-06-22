@@ -175,7 +175,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
           description={post.frontmatter.description || post.excerpt}
         />
         <Grid container direction="row-reverse" justify="space-around">
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={4} lg={3}>
             <TOC>
               <Typography>目次</Typography>
               {props.data.markdownRemark!.tableOfContents && (
@@ -187,7 +187,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               )}
             </TOC>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8} lg={6}>
             <Paper className={classes.paper}>
               <h1>{post.frontmatter.title}</h1>
               <p
@@ -240,7 +240,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               </ul>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={3} className={classes.sideMenu}>
+          <Grid item xs={12} lg={3} className={classes.sideMenu}>
             <Hidden smDown>
               <Img src="/cherry-blossom-large.svg"></Img>
             </Hidden>
