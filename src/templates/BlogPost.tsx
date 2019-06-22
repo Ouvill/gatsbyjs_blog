@@ -249,7 +249,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
             </Paper>
           </Grid>
           <Grid item xs={12} lg={3} className={classes.sideMenu}>
-            <Hidden smDown>
+            <Hidden mdDown>
               <Img src="/cherry-blossom-large.svg"></Img>
             </Hidden>
           </Grid>
