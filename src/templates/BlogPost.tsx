@@ -39,15 +39,16 @@ const BlogContents = styled.div`
 
 const TOC = styled(Paper)`
   max-height: calc(80vh - 100px);
+  max-width: 760px;
   position: sticky;
   top: 100px;
 
   margin: 0 ${props => props.theme.spacing(2)}px;
   @media (max-width: ${props => props.theme.breakpoints.values.md}px) {
-    margin: 0 0 ${props => props.theme.spacing(2)}px 0;
+    margin: 0 auto ${props => props.theme.spacing(2)}px auto;
   }
 
-  padding: ${props => props.theme.spacing(3)}px;
+  padding: ${props => props.theme.spacing(2)}px;
   overflow-y: auto;
 
   /* font-family: "serif"; */
@@ -80,7 +81,6 @@ const Article = styled.div`
     padding-left: 0.75em;
     border-left: 0.25em solid #f99;
   }
-
   /**
  * Add back the container background-color, border-radius, padding, margin
  * and overflow that we removed from <pre>.
@@ -107,6 +107,7 @@ const Article = styled.div`
     overflow: initial;
     float: left; /* 1 */
     min-width: 100%; /* 2 */
+    white-space: pre-wrap;
   }
 `
 
@@ -174,7 +175,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
           description={post.frontmatter.description || post.excerpt}
         />
         <Grid container direction="row-reverse" justify="space-around">
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={4} lg={3}>
             <TOC>
               <Typography>目次</Typography>
               {props.data.markdownRemark!.tableOfContents && (
@@ -186,7 +187,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               )}
             </TOC>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8} lg={6}>
             <Paper className={classes.paper}>
               <h1>{post.frontmatter.title}</h1>
               <p
@@ -239,7 +240,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               </ul>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={3} className={classes.sideMenu}>
+          <Grid item xs={12} lg={3} className={classes.sideMenu}>
             <Hidden smDown>
               <Img src="/cherry-blossom-large.svg"></Img>
             </Hidden>
