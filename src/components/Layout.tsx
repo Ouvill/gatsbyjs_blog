@@ -17,9 +17,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.palette.secondary.dark};
+    color: ${props => props.theme.palette.secondary.main};
     &:hover {
-       color: ${props => props.theme.palette.secondary.main}
+       color: ${props => props.theme.palette.secondary.main};
+       opacity:0.8;
+
       }
     }
   }
