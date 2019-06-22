@@ -55,7 +55,7 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                     url: "/?no-cache=1",
                     method: "post",
                     headers: {
-                      "content-type": "application/x-www-form-urlencoded",
+                      "Content-Type": "application/x-www-form-urlencoded",
                     },
                     data: encode({ "form-name": "contact", ...values }),
                   })
@@ -88,11 +88,12 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                 {({ handleSubmit, handleChange, values, isSubmitting }) => (
                   <Form
                     onSubmit={handleSubmit}
+                    name="contact"
                     data-netlify="true"
-                    data-netlify-honeypot="bot-field"
                   >
                     {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                     <input type="hidden" name="form-name" value="contact" />
+
                     <TextField
                       name="name"
                       value={values.name}
