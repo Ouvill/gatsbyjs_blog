@@ -21,7 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.palette.secondary.main};
+    transition: all 200ms 0s ease;
+    color: ${props => props.theme.palette.secondary.dark};
     &:hover {
        color: ${props => props.theme.palette.secondary.main};
        opacity:0.8;
