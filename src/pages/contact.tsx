@@ -12,6 +12,7 @@ const initialInputs = {
   name: "",
   email: "",
   context: "",
+  botField: "",
 }
 
 const encode = (data: { [key: string]: string }) => {
@@ -50,7 +51,7 @@ const ContactPage: React.FC<ContactPageProps> = props => {
               <Formik
                 initialValues={initialInputs}
                 validate={values => {}}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { setSubmitting, setValues }) => {
                   axios({
                     url: "/?no-cache=1",
                     method: "post",
@@ -60,8 +61,10 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                     data: encode({ "form-name": "contact", ...values }),
                   })
                     .then(res => {
-                      alert("success")
-                      console.log(res.data)
+                      alert(
+                        "お問い合わせありがとうございます。確認次第連絡致します。"
+                      )
+                      setValues(initialInputs)
                     })
                     .catch(error => {
                       if (error.response) {
@@ -90,9 +93,20 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                     onSubmit={handleSubmit}
                     name="contact"
                     data-netlify="true"
+                    data-netlify-honeypot="botField"
                   >
                     {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                     <input type="hidden" name="form-name" value="contact" />
+                    <p hidden>
+                      <label>
+                        Don’t fill this out:{" "}
+                        <input
+                          name="botField"
+                          value={values.botField}
+                          onChange={handleChange}
+                        />
+                      </label>
+                    </p>
 
                     <TextField
                       name="name"
