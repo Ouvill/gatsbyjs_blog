@@ -36,6 +36,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 function createIndexPage(graphql, createPage) {
   const indexPage = path.resolve("./src/templates/indexes.tsx")
+  const listNum = 12
+
   return graphql(`
     {
       site {
@@ -56,8 +58,8 @@ function createIndexPage(graphql, createPage) {
 
     const total = result.data.allMarkdownRemark.totalCount
     const defaultCover = result.data.site.siteMetadata.defaultCover
-    const pages = total / 9
-    const rest = total % 9
+    const pages = total / listNum
+    const rest = total % listNum
     for (i = 0; i < pages; i++) {
       const next = (i === pages - 1 && rest) || i < pages - 1 ? i + 1 : null
       const previous = i === 0 ? null : i - 1
@@ -66,7 +68,7 @@ function createIndexPage(graphql, createPage) {
           path: "/",
           component: indexPage,
           context: {
-            index: i * 9,
+            index: i * listNum,
             defaultCover,
             previous,
             next,
@@ -78,7 +80,7 @@ function createIndexPage(graphql, createPage) {
         path: `indexes/${i}`,
         component: indexPage,
         context: {
-          index: i * 9,
+          index: i * listNum,
           defaultCover,
           previous,
           next,

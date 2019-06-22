@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Wrap = styled.div`
   max-width: 820px;
   margin: 0 auto;
+  padding: 0 ${props => props.theme.spacing(2)}px;
 `
 
 interface IndexesProps extends PageRendererProps {
@@ -70,7 +71,7 @@ const Indexes: React.FC<IndexesProps> = props => {
   return (
     <Layout location={props.location} title={siteTitle}>
       <Wrap>
-        <Grid container spacing={4} justify="center">
+        <Grid container spacing={4}>
           {posts.map(({ node }) => {
             if (node.frontmatter && node.fields && node.fields.slug) {
               const title = node.frontmatter.title || node.fields.slug
@@ -157,7 +158,7 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       skip: $index
-      limit: 9
+      limit: 12
     ) {
       edges {
         node {
