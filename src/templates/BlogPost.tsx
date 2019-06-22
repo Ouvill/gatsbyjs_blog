@@ -74,6 +74,7 @@ const TOC = styled(Paper)`
 `
 
 const Article = styled.div`
+  line-height: 1.6;
   .gatsby-highlight-code-line {
     background-color: #feb;
     display: block;
