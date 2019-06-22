@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import { BioQueryQuery } from "../graphqlTypes"
 import Image, { FixedObject } from "gatsby-image"
 
@@ -21,6 +21,7 @@ const Bio: React.FC = () => {
             <div
               style={{
                 display: `flex`,
+                alignItems: "center",
               }}
             >
               {data.avatar && data.avatar.childImageSharp && (
@@ -29,7 +30,8 @@ const Bio: React.FC = () => {
                   alt={author ? author : ""}
                   style={{
                     marginBottom: 0,
-                    minWidth: 50,
+                    marginRight: "16px",
+                    minWidth: 64,
                     borderRadius: `100%`,
                   }}
                   imgStyle={{
@@ -37,16 +39,24 @@ const Bio: React.FC = () => {
                   }}
                 />
               )}
-              <p>
-                この記事は <strong>{author}</strong>{" "}
-                が書きました。サイト作成や記事執筆のご依頼を賜っております。
-                {` `}
-                {social && social.twitter && (
-                  <a href={`https://twitter.com/${social.twitter}`}>
-                    Twitter でも呟いております。
-                  </a>
-                )}
-              </p>
+              <div>
+                <p>
+                  この記事は <strong>{author}</strong>{" "}
+                  が書きました。サイト作成や、ウェブアプリケーション開発、IT
+                  関連の記事執筆のご依頼を賜っております。
+                </p>
+                <p>
+                  ご要件がある方は<Link to="/contact">コンタクトフォーム</Link>
+                  からご連絡ください。
+                </p>
+                <p>
+                  {social && social.twitter && (
+                    <a href={`https://twitter.com/${social.twitter}`}>
+                      @Ouvill
+                    </a>
+                  )}
+                </p>
+              </div>
             </div>
           )
         } else {
@@ -61,7 +71,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 64, height: 64) {
           ...GatsbyImageSharpFixed
         }
       }
