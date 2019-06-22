@@ -81,7 +81,6 @@ const Article = styled.div`
     padding-left: 0.75em;
     border-left: 0.25em solid #f99;
   }
-
   /**
  * Add back the container background-color, border-radius, padding, margin
  * and overflow that we removed from <pre>.
@@ -108,6 +107,7 @@ const Article = styled.div`
     overflow: initial;
     float: left; /* 1 */
     min-width: 100%; /* 2 */
+    white-space: pre-wrap;
   }
 `
 
