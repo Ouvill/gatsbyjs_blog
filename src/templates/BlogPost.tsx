@@ -39,15 +39,16 @@ const BlogContents = styled.div`
 
 const TOC = styled(Paper)`
   max-height: calc(80vh - 100px);
+  max-width: 760px;
   position: sticky;
   top: 100px;
 
   margin: 0 ${props => props.theme.spacing(2)}px;
   @media (max-width: ${props => props.theme.breakpoints.values.md}px) {
-    margin: 0 0 ${props => props.theme.spacing(2)}px 0;
+    margin: 0 auto ${props => props.theme.spacing(2)}px auto;
   }
 
-  padding: ${props => props.theme.spacing(3)}px;
+  padding: ${props => props.theme.spacing(2)}px;
   overflow-y: auto;
 
   /* font-family: "serif"; */
