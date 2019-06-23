@@ -104,12 +104,6 @@ const useStyle = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.default,
   },
 
-  main: {
-    display: "relative",
-    marginLeft: `auto`,
-    marginRight: `auto`,
-  },
-
   title: {
     textAlign: "center",
   },
