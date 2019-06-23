@@ -20,13 +20,14 @@ const renderAst = new rehypeReact({
   components: { "interactive-counter": Counter },
 }).Compiler
 
+const MainPaper = styled(Paper)`
+  max-width: 760px;
+  padding: ${props => props.theme.spacing(2)}px;
+  position: relative;
+  margin: 0 auto;
+`
+
 const useStyles = makeStyles((theme: Theme) => ({
-  paper: {
-    maxWidth: "760px",
-    padding: "16px",
-    position: "relative",
-    margin: "0 auto",
-  },
   sideMenu: {
     display: "flex",
     alignItems: "flex-end",
@@ -74,6 +75,7 @@ const TOC = styled(Paper)`
 `
 
 const Article = styled.div`
+  width: 100%;
   line-height: 1.6;
   .gatsby-highlight-code-line {
     background-color: #feb;
@@ -195,7 +197,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
             </TOC>
           </Grid>
           <Grid item xs={12} md={8} lg={6}>
-            <Paper className={classes.paper}>
+            <MainPaper>
               <h1>{post.frontmatter.title}</h1>
               <p
                 style={{
@@ -245,7 +247,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
                   )}
                 </li>
               </ul>
-            </Paper>
+            </MainPaper>
           </Grid>
           <Grid item xs={12} lg={3} className={classes.sideMenu}>
             <Hidden mdDown>
