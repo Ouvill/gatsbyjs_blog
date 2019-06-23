@@ -25,6 +25,10 @@ const MainPaper = styled(Paper)`
   padding: ${props => props.theme.spacing(2)}px;
   position: relative;
   margin: 0 auto;
+
+  ${props => props.theme.breakpoints.down("sm")} {
+    width: 100vw;
+  }
 `
 
 const useStyles = makeStyles((theme: Theme) => ({
