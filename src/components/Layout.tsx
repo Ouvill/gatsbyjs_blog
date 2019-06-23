@@ -13,7 +13,13 @@ import Fade from "./PoseFade"
 import SiteMenu from "./SiteMenu"
 
 const GlobalStyle = createGlobalStyle`
-  * { box-sizing:border-box; }
+  *, *:before, *:after {
+    box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    }
 
   body {
     margin: 0;
