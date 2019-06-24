@@ -116,11 +116,9 @@ const Article = styled.div`
     overflow: initial;
     float: left; /* 1 */
     min-width: 100%; /* 2 */
-    white-space: pre-wrap;
   }
 
   code[class*="language-"] {
-    white-space: pre-wrap;
   }
 `
 
