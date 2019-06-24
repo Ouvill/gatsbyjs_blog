@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
+    scroll-behavior: smooth;
     }
 
   body {
@@ -74,6 +75,8 @@ const Center = styled.div`
 
 const Main = styled.main`
   position: relative;
+  left: 0;
+  right: 0;
   z-index: 1;
 `
 
