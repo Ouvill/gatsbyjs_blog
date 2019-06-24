@@ -19,8 +19,11 @@ const GlobalStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
-    scroll-behavior: smooth;
     }
+
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     margin: 0;
