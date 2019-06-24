@@ -48,7 +48,12 @@ module.exports = {
             },
           },
           `gatsby-remark-autolink-headers`,
-
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              rel: "noopener noreferrer",
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
