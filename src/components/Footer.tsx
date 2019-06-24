@@ -32,7 +32,9 @@ const Footer: React.FC<FooterProps> = props => {
       <p>
         © {new Date().getFullYear()},Designed and Written by Ouvill ,Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <a href="https://www.gatsbyjs.org" target="_blank">
+          Gatsby
+        </a>
       </p>
     </StyledFooter>
   )
