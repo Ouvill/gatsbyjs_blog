@@ -76,6 +76,10 @@ const TOC = styled(Paper)`
   ul ul {
     padding: 0 ${props => props.theme.spacing(2)}px;
   }
+
+  li {
+    margin-top: 0.6em;
+  }
 `
 
 const Article = styled.div`
