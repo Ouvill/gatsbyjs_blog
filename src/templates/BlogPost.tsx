@@ -283,6 +283,34 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
+
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+      limit: 3
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "YYYY/MM/DD")
+            title
+            description
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 640, maxHeight: 400) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)

@@ -22,6 +22,7 @@ import {
 import siteConfig from "../../gatsby-config"
 import { makeStyles, createStyles } from "@material-ui/styles"
 import styled from "styled-components"
+import PostItemCard from "../components/PostItem"
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -85,26 +86,11 @@ const Indexes: React.FC<IndexesProps> = props => {
                   data.file.childImageSharp.fluid)
               return (
                 <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardActionArea
-                      className={classes.cardAction}
-                      component={Link}
-                      to={node.fields.slug}
-                    >
-                      {coverImg && (
-                        <Img
-                          fluid={coverImg as FluidObject}
-                          alt="cover image"
-                        ></Img>
-                      )}
-                      <CardContent>
-                        <Typography variant="h6" component="h2">
-                          {title}
-                        </Typography>
-                        {/* <Typography>{excerpt}</Typography> */}
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
+                  <PostItemCard
+                    slug={node.fields.slug}
+                    title={title}
+                    coverImg={coverImg as FluidObject}
+                  ></PostItemCard>
                 </Grid>
               )
             }
