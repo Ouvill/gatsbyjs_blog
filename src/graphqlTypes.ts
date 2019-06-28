@@ -2762,6 +2762,7 @@ export type ContactPageQuery = { __typename?: "Query" } & {
 
 export type BlogPostBySlugQueryVariables = {
   slug: Scalars["String"]
+  defaultCover: Scalars["String"]
 }
 
 export type BlogPostBySlugQuery = { __typename?: "Query" } & {
@@ -2772,6 +2773,17 @@ export type BlogPostBySlugQuery = { __typename?: "Query" } & {
           SiteSiteMetadata,
           "title" | "author" | "siteUrl"
         >
+      >
+    }
+  >
+  defaultCover: Maybe<
+    { __typename?: "File" } & {
+      childImageSharp: Maybe<
+        { __typename?: "ImageSharp" } & {
+          fluid: Maybe<
+            { __typename?: "ImageSharpFluid" } & GatsbyImageSharpFluidFragment
+          >
+        }
       >
     }
   >

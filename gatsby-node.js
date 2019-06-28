@@ -135,6 +135,11 @@ function createBlogPosts(graphql, createPage) {
   const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
   return graphql(`
     {
+      site {
+        siteMetadata {
+          defaultCover
+        }
+      }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/blog/" } }
         sort: { fields: [frontmatter___date], order: DESC }
@@ -158,6 +163,8 @@ function createBlogPosts(graphql, createPage) {
     }
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges
+    const defaultCover = result.data.site.siteMetadata.defaultCover
+
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
@@ -166,6 +173,7 @@ function createBlogPosts(graphql, createPage) {
         component: blogPost,
         context: {
           slug: post.node.fields.slug,
+          defaultCover,
           previous,
           next,
         },

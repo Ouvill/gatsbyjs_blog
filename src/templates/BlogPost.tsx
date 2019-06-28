@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
 import Counter from "../components/Counter"
 import Share from "../components/Share"
+import PostItemCard from "../components/PostItem"
+import { FluidObject } from "gatsby-image"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -159,6 +161,9 @@ interface BlogPostTemplateProps extends PageRendererProps {
 const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
   const classes = useStyles()
   const post = props.data.markdownRemark
+  const posts = props.data.allMarkdownRemark
+    ? props.data.allMarkdownRemark.edges
+    : []
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
 
@@ -253,6 +258,33 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
                   )}
                 </li>
               </ul>
+              <Typography variant="h6" component="h4">
+                最新記事
+              </Typography>
+              <Grid container spacing={4}>
+                {posts.map(({ node }) => {
+                  if (node.frontmatter && node.fields && node.fields.slug) {
+                    const title = node.frontmatter.title || node.fields.slug
+                    const excerpt = node.excerpt
+                    const coverImg =
+                      (node.frontmatter.cover &&
+                        node.frontmatter.cover.childImageSharp &&
+                        node.frontmatter.cover.childImageSharp.fluid) ||
+                      (props.data.defaultCover &&
+                        props.data.defaultCover.childImageSharp &&
+                        props.data.defaultCover.childImageSharp.fluid)
+                    return (
+                      <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
+                        <PostItemCard
+                          slug={node.fields.slug}
+                          title={title}
+                          coverImg={coverImg as FluidObject}
+                        ></PostItemCard>
+                      </Grid>
+                    )
+                  }
+                })}
+              </Grid>
             </MainPaper>
           </Grid>
           <Grid item xs={12} lg={3} className={classes.sideMenu}>
@@ -275,12 +307,20 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $defaultCover: String!) {
     site {
       siteMetadata {
         title
         author
         siteUrl
+      }
+    }
+
+    defaultCover: file(absolutePath: { eq: $defaultCover }) {
+      childImageSharp {
+        fluid(maxWidth: 640, maxHeight: 400) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
 
