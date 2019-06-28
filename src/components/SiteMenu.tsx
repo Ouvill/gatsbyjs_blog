@@ -23,8 +23,6 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
-  display: flex;
-  align-items: center;
   margin-left: ${props => props.theme.spacing(2)}px;
 `
 
@@ -34,28 +32,43 @@ const Icon = styled.div`
   margin-right: 4px;
 `
 
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+
+  transition: all 200ms 0s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`
+
 interface MenuProps {
   className?: string
 }
 const SiteMenu: React.FC<MenuProps> = ({ className }) => {
   return (
     <List className={className}>
-      <Link to="/">
-        <ListItem>
-          <Icon>
-            <Blog />
-          </Icon>
-          <p>ブログ</p>
-        </ListItem>
-      </Link>
-      <Link to="/contact">
-        <ListItem>
-          <Icon>
-            <Mail />
-          </Icon>
-          <p>お問い合わせ</p>
-        </ListItem>
-      </Link>
+      <ListItem>
+        <Link to="/">
+          <Flex>
+            <Icon>
+              <Blog />
+            </Icon>
+            <p>ブログ</p>
+          </Flex>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link to="/contact">
+          <Flex>
+            <Icon>
+              <Mail />
+            </Icon>
+            <p>お問い合わせ</p>
+          </Flex>
+        </Link>
+      </ListItem>
     </List>
   )
 }
