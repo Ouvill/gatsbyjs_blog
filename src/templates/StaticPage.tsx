@@ -258,33 +258,6 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
                   )}
                 </li>
               </ul>
-              <Typography variant="h6" component="h4">
-                最新記事
-              </Typography>
-              <Grid container spacing={4}>
-                {posts.map(({ node }) => {
-                  if (node.frontmatter && node.fields && node.fields.slug) {
-                    const title = node.frontmatter.title || node.fields.slug
-                    const excerpt = node.excerpt
-                    const coverImg =
-                      (node.frontmatter.cover &&
-                        node.frontmatter.cover.childImageSharp &&
-                        node.frontmatter.cover.childImageSharp.fluid) ||
-                      (props.data.defaultCover &&
-                        props.data.defaultCover.childImageSharp &&
-                        props.data.defaultCover.childImageSharp.fluid)
-                    return (
-                      <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
-                        <PostItemCard
-                          slug={node.fields.slug}
-                          title={title}
-                          coverImg={coverImg as FluidObject}
-                        ></PostItemCard>
-                      </Grid>
-                    )
-                  }
-                })}
-              </Grid>
             </MainPaper>
           </Grid>
           <Grid item xs={12} lg={3} className={classes.sideMenu}>
@@ -307,47 +280,12 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!, $defaultCover: String!) {
+  query StaticPage($slug: String!) {
     site {
       siteMetadata {
         title
         author
         siteUrl
-      }
-    }
-
-    defaultCover: file(absolutePath: { eq: $defaultCover }) {
-      childImageSharp {
-        fluid(maxWidth: 640, maxHeight: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-      limit: 3
-    ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "YYYY/MM/DD")
-            title
-            description
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 640, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
       }
     }
 
