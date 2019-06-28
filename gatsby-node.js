@@ -91,7 +91,7 @@ function createIndexPage(graphql, createPage) {
 }
 
 function createStaticPages(graphql, createPage) {
-  const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
+  const blogPost = path.resolve(`./src/templates/StaticPage.tsx`)
   return graphql(`
     {
       allMarkdownRemark(
