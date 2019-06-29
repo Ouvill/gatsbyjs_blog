@@ -6,7 +6,7 @@ const Fade = posed.div({
   enter: {
     opacity: 1,
     delay: 100,
-    // beforeChildren: true
+    transition: { duration: 50 },
   },
   exit: {
     opacity: 0,
