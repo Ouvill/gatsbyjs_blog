@@ -22,6 +22,8 @@ const encode = (data: { [key: string]: string }) => {
 }
 
 const MainPaper = styled(Paper)`
+  max-width: 760px;
+  margin: 0 auto;
   padding: ${props => props.theme.spacing(2)}px;
 `
 
