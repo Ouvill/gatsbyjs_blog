@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import { PageRendererProps, graphql } from "gatsby"
 import SEO from "../components/seo"
-import { Grid, Paper, TextField, Button } from "@material-ui/core"
+import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core"
 import { ContactPageQuery } from "../graphqlTypes"
 import { Formik } from "formik"
 import styled from "styled-components"
@@ -46,10 +46,24 @@ const ContactPage: React.FC<ContactPageProps> = props => {
         <Grid container direction="column">
           <Grid item xs={12} md={6} style={{ margin: "0 auto", width: "100%" }}>
             <MainPaper>
-              <h1>お問い合わせ</h1>
-              <p>
-                何かお問い合わせがあればこちらのコンタクトフォームからどうぞ。
-              </p>
+              <Typography variant="h4" component="h2">
+                お問い合わせ
+              </Typography>
+              <Typography>
+                何か「おーびる」に対して聞きたいこと、または、依頼があればこちらのコンタクトフォームで受け付けております。
+              </Typography>
+              <Typography>
+                以下のようなお仕事の依頼も受け付けています。
+                <ul>
+                  <li>Webサイト制作</li>
+                  <li>Web システム制作</li>
+                  <li>モバイルアプリ制作</li>
+                </ul>
+              </Typography>
+              <Typography>
+                お仕事のほかにサイトの感想やコメントなども大歓迎です。
+              </Typography>
+
               <Formik
                 initialValues={initialInputs}
                 validate={values => {}}
