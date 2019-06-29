@@ -8,4 +8,8 @@ http://jovial-nobel-357f47.netlify.com/* https://blog.ouvill.net/:splat 301!
 
 
 # Blog Post Redirect
-/posts/:year/:month/:day/:slug /blog/:year-:month-:day--:slug/:slug
+/posts/2019/01/28/discord-rss.html /blog/2019-01-28--discord_rss/discord_rss/
+/posts/2019/01/11/set-cmd-chemes.html /blog/2019-01-11--set_cmd_chemes/set_cmd_chemes/
+/posts/2019/03/30 /blog/2019-03-30--vuepress_blog/make_vuepress_blog/
+
+# /posts/:year/:month/:day/:slug /blog/:year-:month-:day--:slug/:slug
