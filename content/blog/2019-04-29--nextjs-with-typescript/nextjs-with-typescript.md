@@ -11,7 +11,7 @@ description: ""
 
 NextJS は React を用いてサーバーサイドレンダリングに対応したサイトを作成するためのフレームワークです。
 
-今回、NextJS を TypeScript で高利用するための手順書です。
+今回の記事は NextJS を TypeScript 開発するための手順書です。
 
 やっていることは以下のリポジトリの Readme と変わりません。
 
@@ -45,7 +45,7 @@ mkdir pages
 
 NextJS では pages に格納された JS ファイルを Web ページとして表示できます。
 
-たとえば、トップページ(index)を用意したいときは、pages/index.js に以下のようにすることでサイトを構築できます。
+たとえば、トップページ (index) を用意したいときは、pages/index.js に以下のようにすることでサイトを構築できます。
 
 ```js
 const Index = () => {
