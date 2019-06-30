@@ -96,7 +96,7 @@ sudo apt install libvips-dev
 インストールが終わったら、sharp のインストールに再度チャレンジ
 
 ```
-yarn install sharp
+yarn add sharp
 ```
 
 問題なくインストールが進み、実行できるようになりました。
