@@ -15,5 +15,7 @@ http://jovial-nobel-357f47.netlify.com/* https://blog.ouvill.net/:splat 301!
 /posts/2019/04/15/webpack-scss.html /blog/2019-04-15--webpack-scss/webpack-scss/
 /posts/2019/04/17/webpack-sass-typescript.html /blog/2019-04-17--webpack-sass-typescript/webpack-sass-typescript/
 /posts/2019/06/14/cant-install-npm-sharp.html /blog/2019-06-14--npm-sharp/cant-install-npm-sharp/
+/posts/2019/04/29/nextjs-with-typescript.html /blog/2019-04-29--nextjs-with-typescript/nextjs-with-typescript/
+
 
 # /posts/:year/:month/:day/:slug /blog/:year-:month-:day--:slug/:slug
