@@ -47,6 +47,37 @@ $ token=$(sudo microk8s.kubectl -n kube-system get secret | grep default-token |
 $ sudo microk8s.kubectl -n kube-system describe secret $token
 ```
 
+ダッシュボードにアクセスするためのアドレスを取得する。
+
+```
+$ kubectl get services --namespace=kube-system
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                  AGE
+dashboard-metrics-scraper   ClusterIP   10.152.183.163   <none>        8000/TCP                 13d
+heapster                    ClusterIP   10.152.183.143   <none>        80/TCP                   13d
+kube-dns                    ClusterIP   10.152.183.10    <none>        53/UDP,53/TCP,9153/TCP   13d
+kubernetes-dashboard        ClusterIP   10.152.183.142   <none>        443/TCP                  13d
+monitoring-grafana          ClusterIP   10.152.183.219   <none>        80/TCP                   13d
+monitoring-influxdb         ClusterIP   10.152.183.75    <none>        8083/TCP,8086/TCP        13d
+```
+
+今回の場合、ダッシュボードをアクセスするには、`https://10.152.183.142/` にアクセスすればよいと分かる。
+
+ただし、ClusterIP なので、ローカルアドレスからしかアクセスできない点に注意。
+
+ダッシュボードにアクセスできたら、取得した Token を利用して認証する。
+
+### 外部から Kubernetes のダッシュボードにアクセスする場合
+
+ダッシュボードをポートフォワーディングでアクセスできるようにする。
+
+```
+microk8s.kubectl port-forward -n kube-system service/kubernetes-dashboard 10443:443 --address 0.0.0.0
+```
+
+上記のようにすると、ローカルマシンの10443ポートとダッシュボードが結びつく。
+
+なので、ローカルマシンから `https://127.0.0.1:10443` にアクセスしたり、外部マシンから`https://${microk8sを動かしたPCのIP}:10443` でアクセスできる。
+
 ## Kubernetes でコンテナ作成
 
 リソースファイルを作成
@@ -91,3 +122,8 @@ kubectl delete -f sample-pod.yml
 ## まとめ
 
 以上、Kubernates のインストールから、簡単なリソースの立ち上げまででした。
+
+## 参考
+
+- [第560回　microk8sでお手軽Kubernetes環境構築](https://gihyo.jp/admin/serial/01/ubuntu-recipe/0560)
+- [Dashboard addon](https://microk8s.io/docs/addon-dashboard)
