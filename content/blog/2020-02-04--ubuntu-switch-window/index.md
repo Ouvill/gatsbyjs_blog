@@ -10,7 +10,7 @@ tags:
 cover: ./images/cover.png
 ---
 
-Ubuntu 18.04 の ショートカット Alt + Tab は、アプリケーション単位での切り替えです。
+Ubuntu 18.04 のショートカット Alt + Tab は、アプリケーション単位での切り替えです。
 
 同じアプリケーションで複数ウィンドウを開いていると、アプリケーション単位の切り替えでは切り替えられません。
 
@@ -30,6 +30,8 @@ $ sudo apt install dconf-editor
 - `switch-applications-backward` から `'<Shift><Alt>Tab'` を削除、`switch-windows-backward'` に `'<Shift><Alt>Tab'` を記述
 - dconf-editor を閉じる
 - 設定が反映されていないのなら、X11を再起動
+
+
 
 ## 参考
 
