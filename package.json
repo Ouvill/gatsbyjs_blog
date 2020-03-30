@@ -60,7 +60,7 @@
     "typography": "^0.16.19",
     "typography-theme-japanese-tofu": "^0.0.1",
     "typography-theme-wordpress-2016": "^0.16.19",
-    "unified": "^7.1.0"
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
