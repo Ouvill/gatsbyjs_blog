@@ -2,7 +2,7 @@
 title: "WSL2でYubikeyを利用する。"
 subTitle: ""
 description: ""
-date: 2021/04/02
+date: 2021-04-02
 category: 'it'
 tags:
   - Yubikey
