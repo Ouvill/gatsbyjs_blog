@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { Mail } from "styled-icons/feather/Mail"
-import { Blog } from "styled-icons/icomoon/Blog"
+import { Mail } from "@styled-icons/feather/Mail"
+import { Blog } from "@styled-icons/icomoon/Blog"
 import { theme } from "./theme"
 
 const List = styled.ul`
