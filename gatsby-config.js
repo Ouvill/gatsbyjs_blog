@@ -92,5 +92,6 @@ module.exports = {
     // `gatsby-plugin-transition-link`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    { resolve: "gatsby-plugin-codegen", options: {} },
   ],
 }
