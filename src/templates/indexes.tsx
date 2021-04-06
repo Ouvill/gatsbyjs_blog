@@ -71,6 +71,14 @@ const Indexes: React.FC<IndexesProps> = props => {
 
   return (
     <Layout location={props.location} title={siteTitle}>
+      <SEO
+        title={data.site?.siteMetadata?.title ?? ""}
+        image={
+          data.site?.siteMetadata?.siteUrl && data?.file?.publicURL
+            ? data.site?.siteMetadata.siteUrl + data?.file?.publicURL
+            : ""
+        }
+      ></SEO>
       <Wrap>
         <Grid container spacing={4}>
           {posts.map(({ node }) => {
@@ -130,6 +138,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     file(absolutePath: { eq: $defaultCover }) {
@@ -138,6 +147,7 @@ export const pageQuery = graphql`
           ...GatsbyImageSharpFluid
         }
       }
+      publicURL
     }
 
     allMarkdownRemark(

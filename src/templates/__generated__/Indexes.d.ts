@@ -9,6 +9,7 @@
 
 export interface Indexes_site_siteMetadata {
   title: string | null;
+  siteUrl: string | null;
 }
 
 export interface Indexes_site {
@@ -32,6 +33,10 @@ export interface Indexes_file {
    * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
    */
   childImageSharp: Indexes_file_childImageSharp | null;
+  /**
+   * Copy file to static directory and return public url to it
+   */
+  publicURL: string | null;
 }
 
 export interface Indexes_allMarkdownRemark_edges_node_fields {
