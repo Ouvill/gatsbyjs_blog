@@ -8,7 +8,7 @@ import url from "url"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
+import { BlogPostBySlug } from "./__generated__/BlogPostBySlug"
 import { Paper, Theme, Box, Grid, Typography, Hidden } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
@@ -151,7 +151,7 @@ interface NavNove {
 }
 
 interface BlogPostTemplateProps extends PageRendererProps {
-  data: BlogPostBySlugQuery
+  data: BlogPostBySlug
   pageContext: {
     previous?: NavNove
     next?: NavNove
@@ -193,6 +193,12 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
         <SEO
           title={post.frontmatter.title ? post.frontmatter.title : "unnamed"}
           description={post.frontmatter.description || post.excerpt}
+          image={
+            post.frontmatter.cover && props.data.site?.siteMetadata?.siteUrl
+              ? props.data.site.siteMetadata.siteUrl +
+                post.frontmatter.cover.publicURL
+              : ""
+          }
         />
         <Grid container direction="row-reverse" justify="space-around">
           <Grid item xs={12} md={4} lg={3}>
@@ -364,6 +370,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY/MM/DD,")
         description
+        cover {
+          publicURL
+        }
       }
     }
   }

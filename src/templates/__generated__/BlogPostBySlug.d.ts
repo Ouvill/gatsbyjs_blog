@@ -84,10 +84,18 @@ export interface BlogPostBySlug_markdownRemark_fields {
   slug: string | null;
 }
 
+export interface BlogPostBySlug_markdownRemark_frontmatter_cover {
+  /**
+   * Copy file to static directory and return public url to it
+   */
+  publicURL: string | null;
+}
+
 export interface BlogPostBySlug_markdownRemark_frontmatter {
   title: string | null;
   date: any | null;
   description: string | null;
+  cover: BlogPostBySlug_markdownRemark_frontmatter_cover | null;
 }
 
 export interface BlogPostBySlug_markdownRemark {
