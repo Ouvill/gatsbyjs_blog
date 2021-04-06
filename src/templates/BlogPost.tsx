@@ -197,7 +197,9 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
             post.frontmatter.cover && props.data.site?.siteMetadata?.siteUrl
               ? props.data.site.siteMetadata.siteUrl +
                 post.frontmatter.cover.publicURL
-              : ""
+              : (props.data.site?.siteMetadata?.siteUrl &&
+                  props.data?.defaultCover?.publicURL) ??
+                ""
           }
         />
         <Grid container direction="row-reverse" justify="space-around">
@@ -328,6 +330,7 @@ export const pageQuery = graphql`
           ...GatsbyImageSharpFluid
         }
       }
+      publicURL
     }
 
     allMarkdownRemark(
