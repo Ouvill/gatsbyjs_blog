@@ -4262,6 +4262,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "githubURL",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -6101,6 +6111,18 @@
           "fields": [
             {
               "name": "slug",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "githubURL",
               "description": null,
               "args": [],
               "type": {
@@ -9619,6 +9641,12 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
+              "name": "childrenMarkdownRemark___fields___githubURL",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
               "name": "childrenMarkdownRemark___html",
               "description": null,
               "isDeprecated": true,
@@ -10208,6 +10236,12 @@
             },
             {
               "name": "childMarkdownRemark___fields___slug",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "childMarkdownRemark___fields___githubURL",
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
@@ -21994,6 +22028,12 @@
             },
             {
               "name": "fields___slug",
+              "description": null,
+              "isDeprecated": true,
+              "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "fields___githubURL",
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."

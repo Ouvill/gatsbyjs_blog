@@ -86,6 +86,7 @@ export interface BlogPostBySlug_allMarkdownRemark {
 
 export interface BlogPostBySlug_markdownRemark_fields {
   slug: string | null;
+  githubURL: string | null;
 }
 
 export interface BlogPostBySlug_markdownRemark_frontmatter_cover {

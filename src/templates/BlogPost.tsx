@@ -44,6 +44,10 @@ const BlogContents = styled.div`
   display: flex;
 `
 
+const EditGitHub = styled.div`
+  margin-top: 16px;
+`
+
 const TOC = styled(Paper)`
   max-width: 760px;
   margin: 0 ${props => props.theme.spacing(2)}px;
@@ -266,33 +270,44 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
                   )}
                 </li>
               </ul>
-              <Typography variant="h6" component="h4">
-                最新記事
-              </Typography>
-              <Grid container spacing={4}>
-                {posts.map(({ node }) => {
-                  if (node.frontmatter && node.fields && node.fields.slug) {
-                    const title = node.frontmatter.title || node.fields.slug
-                    const excerpt = node.excerpt
-                    const coverImg =
-                      (node.frontmatter.cover &&
-                        node.frontmatter.cover.childImageSharp &&
-                        node.frontmatter.cover.childImageSharp.fluid) ||
-                      (props.data.defaultCover &&
-                        props.data.defaultCover.childImageSharp &&
-                        props.data.defaultCover.childImageSharp.fluid)
-                    return (
-                      <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
-                        <PostItemCard
-                          slug={node.fields.slug}
-                          title={title}
-                          coverImg={coverImg as FluidObject}
-                        ></PostItemCard>
-                      </Grid>
-                    )
-                  }
-                })}
-              </Grid>
+              <div>
+                <Typography variant="h6" component="h4">
+                  最新記事
+                </Typography>
+                <Grid container spacing={4}>
+                  {posts.map(({ node }) => {
+                    if (node.frontmatter && node.fields && node.fields.slug) {
+                      const title = node.frontmatter.title || node.fields.slug
+                      const excerpt = node.excerpt
+                      const coverImg =
+                        (node.frontmatter.cover &&
+                          node.frontmatter.cover.childImageSharp &&
+                          node.frontmatter.cover.childImageSharp.fluid) ||
+                        (props.data.defaultCover &&
+                          props.data.defaultCover.childImageSharp &&
+                          props.data.defaultCover.childImageSharp.fluid)
+                      return (
+                        <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
+                          <PostItemCard
+                            slug={node.fields.slug}
+                            title={title}
+                            coverImg={coverImg as FluidObject}
+                          ></PostItemCard>
+                        </Grid>
+                      )
+                    }
+                  })}
+                </Grid>
+              </div>
+              {props.data.markdownRemark?.fields?.githubURL && (
+                <EditGitHub>
+                  <Typography align="right">
+                    <Link to={props.data.markdownRemark?.fields?.githubURL}>
+                      GitHubで編集する
+                    </Link>
+                  </Typography>
+                </EditGitHub>
+              )}
             </MainPaper>
           </Grid>
           <Grid item xs={12} lg={3} className={classes.sideMenu}>
@@ -365,6 +380,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       fields {
         slug
+        githubURL
       }
       html
       htmlAst

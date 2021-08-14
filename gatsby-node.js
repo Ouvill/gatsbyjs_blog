@@ -14,13 +14,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const filepath = node.fileAbsolutePath
-    const reg = /content\/blog/
+    const reg = /content\/blog\/.*/
     if (reg.test(filepath)) {
       const value = createFilePath({ node, getNode })
       createNodeField({
         name: `slug`,
         node,
         value: `/blog${value}`,
+      })
+
+      createNodeField({
+        name: `githubURL`,
+        node,
+        value: `https://github.com/Ouvill/gatsbyjs_blog/tree/master/${reg.exec(filepath)[0]}`
       })
     }
     if (filepath.match(/content\/pages/)) {
