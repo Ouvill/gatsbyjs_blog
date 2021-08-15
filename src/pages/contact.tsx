@@ -128,7 +128,7 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                       name="name"
                       value={values.name}
                       onChange={handleChange}
-                      label="お名前"
+                      label="お名前(ペンネーム可)"
                       fullWidth
                       variant="outlined"
                       required
