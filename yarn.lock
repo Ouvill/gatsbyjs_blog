@@ -3001,12 +3001,12 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-share@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@types/react-share/-/react-share-3.0.3.tgz#d75514902b0a3a77800b3bea0395f7add463b228"
-  integrity sha512-GpKAVNbwMBgad0995uVLkOdKWp3CjCrvIeUt4qZcsrgLtf7SMR7gIfMgC9X2rsfLgN6saT/nr2T4QLJE9cCZiA==
+"@types/react-share@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-share/-/react-share-4.0.0.tgz#1d3973ef1838c056211fc22c2c210b9816546480"
+  integrity sha512-M2CQ/6Aph5oze3Itm/t08FoI7tGxz2RWsrZv7xft7eO5PAh7U8tCrn1relbZdWUEm1aPFfMr3N0muu3UjYfP0A==
   dependencies:
-    "@types/react" "*"
+    react-share "*"
 
 "@types/react-transition-group@^4.2.0":
   version "4.4.4"
@@ -14514,6 +14514,14 @@ react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-share@*:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-4.4.0.tgz#cabbf2111d7a907a888ab4d89d08410329efd5ee"
+  integrity sha512-POe8Ge/JT9Ew9iyW7CiYsCCWCb8uMJWqFl9S7W0fJ/oH5gBJNzukH0bL5vSr17KKG5h15d3GfKaoviI22BKeYA==
+  dependencies:
+    classnames "^2.2.5"
+    jsonp "^0.2.1"
 
 react-share@^3.0.0:
   version "3.0.1"
