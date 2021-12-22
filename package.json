@@ -45,7 +45,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-pose": "^4.0.8",
-    "react-share": "^3.0.0",
+    "react-share": "^4.4.0",
     "react-transition-group": "^4.1.1",
     "react-typography": "^0.16.19",
     "rehype-react": "^3.1.0",
