@@ -2,7 +2,7 @@
 title: "キーボードのキースイッチをGazzew Boba U4に交換した話"
 subTitle: ""
 description: ""
-image: './signal-2021-12-22-224545_001.jpeg'
+cover: './signal-2021-12-22-224545_001.jpeg'
 date: 2021-12-22
 category: 'it'
 tags:
