@@ -48,7 +48,7 @@
     "react-share": "^3.0.0",
     "react-transition-group": "^4.1.1",
     "react-typography": "^0.16.19",
-    "rehype-react": "^3.1.0",
+    "rehype-react": "^7.0.4",
     "styled-components": "^4.3.1",
     "styled-icons": "^10.31.0",
     "typeface-merriweather": "0.0.72",
