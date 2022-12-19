@@ -8,7 +8,6 @@ import url from "url"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { BlogPostBySlugQuery, MarkdownRemarkEdge } from "../graphqlTypes"
 import { Paper, Theme, Box, Grid, Typography, Hidden } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import styled from "styled-components"
@@ -24,11 +23,11 @@ const renderAst = new rehypeReact({
 
 const MainPaper = styled(Paper)`
   max-width: 760px;
-  padding: ${props => props.theme.spacing(2)}px;
+  padding: ${(props) => props.theme.spacing(2)}px;
   position: relative;
   margin: 0 auto;
 
-  ${props => props.theme.breakpoints.down("sm")} {
+  ${(props) => props.theme.breakpoints.down("sm")} {
     width: 100vw;
   }
 `
@@ -46,25 +45,25 @@ const BlogContents = styled.div`
 
 const TOC = styled(Paper)`
   max-width: 760px;
-  margin: 0 ${props => props.theme.spacing(2)}px;
-  padding: ${props => props.theme.spacing(2)}px;
+  margin: 0 ${(props) => props.theme.spacing(2)}px;
+  padding: ${(props) => props.theme.spacing(2)}px;
   overflow-y: auto;
 
-  ${props => props.theme.breakpoints.up("md")} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     max-height: calc(90vh - 50px);
     position: sticky;
     top: 100px;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.values.md}px) {
-    margin: 0 auto ${props => props.theme.spacing(2)}px auto;
+  @media (max-width: ${(props) => props.theme.breakpoints.values.md}px) {
+    margin: 0 auto ${(props) => props.theme.spacing(2)}px auto;
   }
 
   /* font-family: "serif"; */
   a {
-    color: ${props => props.theme.palette.secondary.dark};
+    color: ${(props) => props.theme.palette.secondary.dark};
     &:hover {
-      color: ${props => props.theme.palette.secondary.main};
+      color: ${(props) => props.theme.palette.secondary.main};
     }
   }
 
@@ -76,7 +75,7 @@ const TOC = styled(Paper)`
   }
 
   ul ul {
-    padding: 0 ${props => props.theme.spacing(2)}px;
+    padding: 0 ${(props) => props.theme.spacing(2)}px;
   }
 
   li {
@@ -151,19 +150,16 @@ interface NavNove {
 }
 
 interface BlogPostTemplateProps extends PageRendererProps {
-  data: BlogPostBySlugQuery
+  data: Queries.StaticPageQuery
   pageContext: {
     previous?: NavNove
     next?: NavNove
   }
 }
 
-const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
   const classes = useStyles()
   const post = props.data.markdownRemark
-  const posts = props.data.allMarkdownRemark
-    ? props.data.allMarkdownRemark.edges
-    : []
   const siteTitle = props.data.site!.siteMetadata!.title || ""
   const { previous, next } = props.pageContext
 
@@ -228,8 +224,9 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = props => {
               <hr style={{}} />
 
               <Share
-                title={`${post.frontmatter.title &&
-                  post.frontmatter.title} | ${siteTitle}`}
+                title={`${
+                  post.frontmatter.title && post.frontmatter.title
+                } | ${siteTitle}`}
                 url={fullPath}
               ></Share>
 

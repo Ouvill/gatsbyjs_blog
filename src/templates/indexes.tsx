@@ -14,11 +14,6 @@ import {
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import {
-  IndexesQuery,
-  MarkdownRemarkEdge,
-  ImageSharpFluid,
-} from "../graphqlTypes"
 import siteConfig from "../../gatsby-config"
 import { makeStyles, createStyles } from "@material-ui/styles"
 import styled from "styled-components"
@@ -49,11 +44,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Wrap = styled.div`
   max-width: 820px;
   margin: 0 auto;
-  padding: 0 ${props => props.theme.spacing(2)}px;
+  padding: 0 ${(props) => props.theme.spacing(2)}px;
 `
 
 interface IndexesProps extends PageRendererProps {
-  data: IndexesQuery
+  data: Queries.IndexesQuery
   pageContext: {
     next: string
     previous: string

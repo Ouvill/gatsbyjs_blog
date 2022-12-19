@@ -3,7 +3,6 @@ import Layout from "../components/Layout"
 import { PageRendererProps, graphql } from "gatsby"
 import SEO from "../components/seo"
 import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core"
-import { ContactPageQuery } from "../graphqlTypes"
 import { Formik } from "formik"
 import styled from "styled-components"
 import axios from "axios"
@@ -17,24 +16,24 @@ const initialInputs = {
 
 const encode = (data: { [key: string]: string }) => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&")
 }
 
 const MainPaper = styled(Paper)`
   max-width: 760px;
   margin: 0 auto;
-  padding: ${props => props.theme.spacing(2)}px;
+  padding: ${(props) => props.theme.spacing(2)}px;
 `
 
 const Form = styled.form`
   & > div {
-    margin-top: ${props => props.theme.spacing(2)}px;
+    margin-top: ${(props) => props.theme.spacing(2)}px;
   }
 `
 
 interface ContactPageProps extends PageRendererProps {
-  data: ContactPageQuery
+  data: Queries.ContactPageQuery
 }
 const ContactPage: React.FC<ContactPageProps> = props => {
   const siteTitle = props.data!.site!.siteMetadata!.title || "no name"

@@ -4,10 +4,9 @@ import { graphql, PageRendererProps } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import { Paper } from "@material-ui/core"
-import { NotFoundPageQuery } from "../graphqlTypes"
 
 interface NotFountPageProps extends PageRendererProps {
-  data: NotFoundPageQuery
+  data: Queries.NotFoundPageQuery
 }
 
 class NotFoundPage extends React.Component<NotFountPageProps> {
