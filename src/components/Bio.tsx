@@ -6,7 +6,7 @@
  */
 
 import { graphql, Link, StaticQuery } from "gatsby"
-import Image, { FixedObject } from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 
 const Bio: React.FC = () => {
@@ -15,6 +15,9 @@ const Bio: React.FC = () => {
       query={bioQuery}
       render={(data: Queries.BioQueryQuery) => {
         if (data.site && data.site.siteMetadata) {
+          const image = data.avatar?.childImageSharp
+            ? getImage(data.avatar?.childImageSharp)
+            : undefined
           const { author, social } = data.site.siteMetadata
           return (
             <div
@@ -23,9 +26,9 @@ const Bio: React.FC = () => {
                 alignItems: "center",
               }}
             >
-              {data.avatar && data.avatar.childImageSharp && (
-                <Image
-                  fixed={data.avatar.childImageSharp.fixed as FixedObject}
+              {image && (
+                <GatsbyImage
+                  image={image}
                   alt={author ? author : ""}
                   style={{
                     marginBottom: 0,
@@ -69,9 +72,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
       childImageSharp {
-        fixed(width: 64, height: 64) {
-          ...GatsbyImageSharpFixed
-        }
+        gatsbyImageData(width: 64, height: 64, formats: [AUTO, WEBP, AVIF])
       }
     }
     site {

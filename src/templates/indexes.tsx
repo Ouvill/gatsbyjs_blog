@@ -1,7 +1,6 @@
 import { Button, Grid, Theme } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import { graphql, Link, PageRendererProps } from "gatsby"
-import { FluidObject } from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout"
@@ -68,20 +67,16 @@ const Indexes: React.FC<IndexesProps> = (props) => {
           {posts.map(({ node }) => {
             if (node.frontmatter && node.fields && node.fields.slug) {
               const title = node.frontmatter.title || node.fields.slug
-              const excerpt = node.excerpt
-              const coverImg =
-                (node.frontmatter.cover &&
-                  node.frontmatter.cover.childImageSharp &&
-                  node.frontmatter.cover.childImageSharp.fluid) ||
-                (data.file &&
-                  data.file.childImageSharp &&
-                  data.file.childImageSharp.fluid)
+
               return (
                 <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
                   <PostItemCard
                     slug={node.fields.slug}
                     title={title}
-                    coverImg={coverImg as FluidObject}
+                    coverImg={
+                      node.frontmatter.cover?.childImageSharp ||
+                      data.file?.childImageSharp
+                    }
                   ></PostItemCard>
                 </Grid>
               )
@@ -127,9 +122,7 @@ export const pageQuery = graphql`
     }
     file(absolutePath: { eq: $defaultCover }) {
       childImageSharp {
-        fluid(maxWidth: 640, maxHeight: 400) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 320, height: 200, formats: [AUTO, WEBP, AVIF])
       }
       publicURL
     }
@@ -152,9 +145,11 @@ export const pageQuery = graphql`
             description
             cover {
               childImageSharp {
-                fluid(maxWidth: 640, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(
+                  width: 320
+                  height: 200
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }
