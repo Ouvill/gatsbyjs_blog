@@ -14,12 +14,11 @@ const Transition = posed.div({
   // exit: { opacity: 0 },
 })
 
-export const replaceComponentRenderer = ({ props, ...other }) => {
-  const { component } = props.pageResources
+export const wrapPageElement = ({ props, element }) => {
   return (
     <PoseGroup>
       <Transition key={props.location.pathname}>
-        {React.createElement(component, props)}
+        {element}
       </Transition>
     </PoseGroup>
   )
