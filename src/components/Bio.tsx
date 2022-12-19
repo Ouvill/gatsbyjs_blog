@@ -8,13 +8,12 @@
 import { graphql, Link, StaticQuery } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
 import React from "react"
-import { BioQueryQuery } from "../graphqlTypes"
 
 const Bio: React.FC = () => {
   return (
     <StaticQuery
       query={bioQuery}
-      render={(data: BioQueryQuery) => {
+      render={(data: Queries.BioQueryQuery) => {
         if (data.site && data.site.siteMetadata) {
           const { author, social } = data.site.siteMetadata
           return (
