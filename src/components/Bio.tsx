@@ -6,7 +6,7 @@
  */
 
 import { graphql, Link, StaticQuery } from "gatsby"
-import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 
 const Bio: React.FC = () => {
