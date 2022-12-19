@@ -161,7 +161,7 @@ function createBlogPosts(graphql, createPage) {
       }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: {frontmatter: {date: DESC}}
         limit: 1000
       ) {
         edges {
