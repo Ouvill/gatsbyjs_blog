@@ -1,4 +1,5 @@
 module.exports = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: `Ouvill のブログ`,
     author: `Ouvill(おーびる)`,
@@ -75,7 +76,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -92,6 +92,5 @@ module.exports = {
     // `gatsby-plugin-transition-link`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-    { resolve: "gatsby-plugin-codegen", options: {} },
   ],
 }

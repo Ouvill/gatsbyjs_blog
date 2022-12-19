@@ -5,7 +5,7 @@ query Indexes($index: Int!) {
     }
   }
   allMarkdownRemark(
-    sort: { fields: [frontmatter___date], order: DESC }
+    sort: {frontmatter: {date: DESC}}
     skip: $index
     limit: 10
   ) {

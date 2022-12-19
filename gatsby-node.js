@@ -1,6 +1,19 @@
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require(`path`)
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+  type MarkdownRemarkFrontmatter @infer {
+    cover: File @fileByRelativePath
+  }
+
+  type MarkdownRemark implements Node @infer {
+    frontmatter: MarkdownRemarkFrontmatter
+  }`)
+}
+
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -102,7 +115,7 @@ function createStaticPages(graphql, createPage) {
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/pages/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: {frontmatter: {date: DESC}}
         limit: 1000
       ) {
         edges {
