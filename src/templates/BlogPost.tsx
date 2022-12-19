@@ -1,7 +1,6 @@
 import { Grid, Hidden, Paper, Theme, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import { graphql, Link, PageRendererProps } from "gatsby"
-import { FluidObject } from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 import Bio from "../components/Bio"
@@ -266,20 +265,15 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
                   {posts.map(({ node }) => {
                     if (node.frontmatter && node.fields && node.fields.slug) {
                       const title = node.frontmatter.title || node.fields.slug
-                      const excerpt = node.excerpt
                       const coverImg =
-                        (node.frontmatter.cover &&
-                          node.frontmatter.cover.childImageSharp &&
-                          node.frontmatter.cover.childImageSharp.fluid) ||
-                        (props.data.defaultCover &&
-                          props.data.defaultCover.childImageSharp &&
-                          props.data.defaultCover.childImageSharp.fluid)
+                        node.frontmatter.cover?.childImageSharp ||
+                        props.data.defaultCover?.childImageSharp
                       return (
                         <Grid item key={node.fields.slug} xs={12} sm={6} md={4}>
                           <PostItemCard
                             slug={node.fields.slug}
                             title={title}
-                            coverImg={coverImg as FluidObject}
+                            coverImg={coverImg}
                           ></PostItemCard>
                         </Grid>
                       )
@@ -329,9 +323,7 @@ export const pageQuery = graphql`
 
     defaultCover: file(absolutePath: { eq: $defaultCover }) {
       childImageSharp {
-        fluid(maxWidth: 640, maxHeight: 400) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 320, height: 200, formats: [AUTO, WEBP, AVIF])
       }
       publicURL
     }
@@ -353,9 +345,11 @@ export const pageQuery = graphql`
             description
             cover {
               childImageSharp {
-                fluid(maxWidth: 640, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(
+                  width: 320
+                  height: 200
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

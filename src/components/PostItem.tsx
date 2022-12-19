@@ -5,7 +5,7 @@ import {
   Typography,
 } from "@material-ui/core"
 import { Link } from "gatsby"
-import Img, { FluidObject } from "gatsby-image"
+import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 
@@ -25,7 +25,7 @@ interface PostItemProps {
   slug: string
   title: string
   className?: string
-  coverImg: FluidObject
+  coverImg?: ImageDataLike | null
 }
 const PostItemCard: React.FC<PostItemProps> = ({
   coverImg,
@@ -33,6 +33,8 @@ const PostItemCard: React.FC<PostItemProps> = ({
   slug,
   className,
 }) => {
+  const image = coverImg ? getImage(coverImg) : undefined
+
   return (
     <StyledCard className={className}>
       <CardActionArea
@@ -40,7 +42,7 @@ const PostItemCard: React.FC<PostItemProps> = ({
         component={Link}
         to={slug}
       >
-        {coverImg && <Img fluid={coverImg} alt="cover image"></Img>}
+        {image && <GatsbyImage image={image} alt={`cover image`} />}
         <CardContent>
           <Typography variant="h6" component="h2">
             {title}
