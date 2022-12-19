@@ -118,6 +118,7 @@ const useStyle = makeStyles((theme: Theme) => ({
 
 interface LayoutProps extends PageRendererProps {
   title: string
+  children: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = props => {
