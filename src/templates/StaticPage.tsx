@@ -1,25 +1,12 @@
+import { Grid, Hidden, Paper, Theme, Typography } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
+import { graphql, Link, PageRendererProps } from "gatsby"
 import React from "react"
-import { Link, graphql, PageRendererProps } from "gatsby"
-import { TransitionState } from "gatsby-plugin-transition-link"
-import unified from "unified"
-import rehypeReact from "rehype-react"
-import url from "url"
-
+import styled from "styled-components"
 import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { Paper, Theme, Box, Grid, Typography, Hidden } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
-import styled from "styled-components"
-import Counter from "../components/Counter"
 import Share from "../components/Share"
-import PostItemCard from "../components/PostItem"
-import { FluidObject } from "gatsby-image"
-
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: { "interactive-counter": Counter },
-}).Compiler
 
 const MainPaper = styled(Paper)`
   max-width: 760px;
@@ -213,7 +200,6 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = (props) => {
               >
                 {post.frontmatter.date}
               </p>
-              {/* {renderAst(post.htmlAst)} */}
               {post.html ? (
                 <Article>
                   <div dangerouslySetInnerHTML={{ __html: post.html }} />

@@ -1,16 +1,15 @@
-import React, { useEffect } from "react"
-import { Link, PageRendererProps } from "gatsby"
+import { makeStyles, Theme, Typography } from "@material-ui/core"
 import {
-  ThemeProvider as MaterialThemeProvider,
   StylesProvider,
+  ThemeProvider as MaterialThemeProvider,
 } from "@material-ui/styles"
-import { theme, siteStyle } from "./theme"
-import { Typography, Theme, makeStyles } from "@material-ui/core"
-import { relative } from "path"
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
+import { Link, PageRendererProps } from "gatsby"
+import React from "react"
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import Footer from "./Footer"
 import Fade from "./PoseFade"
 import SiteMenu from "./SiteMenu"
+import { theme } from "./theme"
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -33,9 +32,9 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     transition: all 200ms 0s ease;
-    color: ${props => props.theme.palette.secondary.dark};
+    color: ${(props) => props.theme.palette.secondary.dark};
     &:hover {
-       color: ${props => props.theme.palette.secondary.main};
+       color: ${(props) => props.theme.palette.secondary.main};
        opacity:0.8;
 
       }
@@ -47,8 +46,8 @@ const Header = styled.header`
   position: relative;
   z-index: 0;
   height: 320px;
-  color: ${props => props.theme.palette.text.primary};
-  background: ${props => props.theme.palette.primary.light};
+  color: ${(props) => props.theme.palette.text.primary};
+  background: ${(props) => props.theme.palette.primary.light};
 `
 
 const InnerHeader = styled.div`
@@ -64,7 +63,7 @@ const InnerHeader = styled.div`
     right: 0;
     height: 100px;
     content: "";
-    background-color: ${props => props.theme.palette.primary.light};
+    background-color: ${(props) => props.theme.palette.primary.light};
   }
 `
 
@@ -88,7 +87,7 @@ const Root = styled.div`
   position: relative;
   width: auto;
   min-height: 100vh;
-  background-color: ${props => props.theme.palette.background.default};
+  background-color: ${(props) => props.theme.palette.background.default};
 `
 
 const Content = styled.div`
@@ -121,7 +120,7 @@ interface LayoutProps extends PageRendererProps {
   children: React.ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = props => {
+const Layout: React.FC<LayoutProps> = (props) => {
   const classes = useStyle()
   const { location, title, children } = props
   const rootPath = `/`

@@ -1,15 +1,14 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
 import { Mail } from "@styled-icons/feather/Mail"
 import { Blog } from "@styled-icons/icomoon/Blog"
-import { theme } from "./theme"
+import { Link } from "gatsby"
+import React from "react"
+import styled from "styled-components"
 
 const List = styled.ul`
   list-style-type: none;
   display: flex;
   justify-content: flex-end;
-  margin: 0 ${props => props.theme.spacing(2)}px;
+  margin: 0 ${(props) => props.theme.spacing(2)}px;
   width: auto;
   a {
     text-decoration: none;
@@ -23,7 +22,7 @@ const List = styled.ul`
 `
 
 const ListItem = styled.li`
-  margin-left: ${props => props.theme.spacing(2)}px;
+  margin-left: ${(props) => props.theme.spacing(2)}px;
 `
 
 const Icon = styled.div`

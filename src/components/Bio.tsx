@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
-import { BioQueryQuery } from "../graphqlTypes"
+import { graphql, Link, StaticQuery } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
+import React from "react"
+import { BioQueryQuery } from "../graphqlTypes"
 
 const Bio: React.FC = () => {
   return (

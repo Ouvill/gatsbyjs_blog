@@ -1,23 +1,12 @@
+import { Button, Grid, Theme } from "@material-ui/core"
+import { makeStyles } from "@material-ui/styles"
+import { graphql, Link, PageRendererProps } from "gatsby"
+import { FluidObject } from "gatsby-image"
 import React from "react"
-import { Link, graphql, PageRendererProps } from "gatsby"
-import Img, { FluidObject } from "gatsby-image"
-import {
-  Card,
-  Typography,
-  Grid,
-  CardActionArea,
-  CardMedia,
-  Theme,
-  Button,
-  CardContent,
-} from "@material-ui/core"
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import SEO from "../components/seo"
-import siteConfig from "../../gatsby-config"
-import { makeStyles, createStyles } from "@material-ui/styles"
 import styled from "styled-components"
+import Layout from "../components/Layout"
 import PostItemCard from "../components/PostItem"
+import SEO from "../components/seo"
 
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -55,7 +44,7 @@ interface IndexesProps extends PageRendererProps {
   }
 }
 
-const Indexes: React.FC<IndexesProps> = props => {
+const Indexes: React.FC<IndexesProps> = (props) => {
   const classes = useStyles()
 
   const { data } = props
@@ -146,7 +135,7 @@ export const pageQuery = graphql`
     }
 
     allMarkdownRemark(
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
       filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       skip: $index
       limit: 12
