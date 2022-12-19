@@ -1,5 +1,14 @@
+const webpack = require('webpack');
 const { createFilePath } = require("gatsby-source-filesystem")
 const path = require(`path`)
+
+exports.onCreateWebpackConfig = ({ loaders, actions, getConfig }) => {
+  const config = getConfig()
+  config.plugins.push(new webpack.ProvidePlugin({
+    "React": "react",
+  }))
+  actions.replaceWebpackConfig(config)
+}
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
