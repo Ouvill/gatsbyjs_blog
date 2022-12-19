@@ -1,15 +1,15 @@
 import React from "react"
 import {
-  TwitterShareButton,
-  TwitterIcon,
-  FacebookShareButton,
-  FacebookIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-  EmailShareButton,
   EmailIcon,
-  LineShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
   LineIcon,
+  LineShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TwitterIcon,
+  TwitterShareButton,
 } from "react-share"
 import styled from "styled-components"
 

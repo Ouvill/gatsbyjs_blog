@@ -1,9 +1,8 @@
-import React from "react"
+import { Paper } from "@material-ui/core"
 import { graphql, PageRendererProps } from "gatsby"
-
+import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import { Paper } from "@material-ui/core"
 
 interface NotFountPageProps extends PageRendererProps {
   data: Queries.NotFoundPageQuery

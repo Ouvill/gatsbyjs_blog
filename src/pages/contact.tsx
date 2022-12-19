@@ -1,11 +1,11 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { PageRendererProps, graphql } from "gatsby"
-import SEO from "../components/seo"
-import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core"
-import { Formik } from "formik"
-import styled from "styled-components"
+import { Button, Grid, Paper, TextField, Typography } from "@material-ui/core"
 import axios from "axios"
+import { Formik } from "formik"
+import { graphql, PageRendererProps } from "gatsby"
+import React from "react"
+import styled from "styled-components"
+import Layout from "../components/Layout"
+import SEO from "../components/seo"
 
 const initialInputs = {
   name: "",
@@ -35,7 +35,7 @@ const Form = styled.form`
 interface ContactPageProps extends PageRendererProps {
   data: Queries.ContactPageQuery
 }
-const ContactPage: React.FC<ContactPageProps> = props => {
+const ContactPage: React.FC<ContactPageProps> = (props) => {
   const siteTitle = props.data!.site!.siteMetadata!.title || "no name"
 
   return (
@@ -65,7 +65,7 @@ const ContactPage: React.FC<ContactPageProps> = props => {
 
               <Formik
                 initialValues={initialInputs}
-                validate={values => {}}
+                validate={(values) => {}}
                 onSubmit={(values, { setSubmitting, setValues }) => {
                   axios({
                     url: "/?no-cache=1",
@@ -75,13 +75,13 @@ const ContactPage: React.FC<ContactPageProps> = props => {
                     },
                     data: encode({ "form-name": "contact", ...values }),
                   })
-                    .then(res => {
+                    .then((res) => {
                       alert(
                         "お問い合わせありがとうございます。確認次第連絡致します。"
                       )
                       setValues(initialInputs)
                     })
-                    .catch(error => {
+                    .catch((error) => {
                       if (error.response) {
                         // The request was made and the server responded with a status code
                         // that falls out of the range of 2xx

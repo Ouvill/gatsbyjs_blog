@@ -5,16 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
-import { BioQueryQuery } from "../graphqlTypes"
+import { graphql, Link, StaticQuery } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
+import React from "react"
 
 const Bio: React.FC = () => {
   return (
     <StaticQuery
       query={bioQuery}
-      render={(data: BioQueryQuery) => {
+      render={(data: Queries.BioQueryQuery) => {
         if (data.site && data.site.siteMetadata) {
           const { author, social } = data.site.siteMetadata
           return (

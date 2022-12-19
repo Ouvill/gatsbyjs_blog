@@ -1,6 +1,6 @@
+import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 
 const StyledFooter = styled.footer`
   margin-top: ${props => props.theme.spacing(4)}px;
