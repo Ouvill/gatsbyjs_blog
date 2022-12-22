@@ -21,13 +21,12 @@ Visual Studio CodeのdevContainerを利用していますか？　開発環境�
     "ghcr.io/ouvill/devcontainers_features/authorized_keys:0": {
       "github_account": "ouvill" // githubのアカウント名
     },
-    "ghcr.io/ouvill/devcontainers_features/jetbrains:1": {}
   },
   "forwardPorts": [
     2222
   ],
   "mounts": [
-    "source=jetbrains,target=/home/vscode/.cache/JetBrains/RemoteDev/dist,type=volume"
+    "source=jetbrains,target=/jetbrains,type=volume"
   ]
 }
 ```
@@ -203,21 +202,16 @@ docker volume create jetbrains
 	"image": "mcr.microsoft.com/devcontainers/base:jammy"
     "features": {
         "ghcr.io/devcontainers/features/sshd:1": {},
-        // 追記
-        "ghcr.io/ouvill/devcontainers_features/jetbrains:1": {}
     },
     "forwardPorts": [
         2222
     ],
     "mounts": [
         // 追記
-        "source=jetbrains,target=/home/vscode/.cache/JetBrains/RemoteDev/dist,type=volume",
+        "source=jetbrains,target=/jetbrains",
     ]
 }
 ```
-
-上記jsonでは`ghcr.io/ouvill/devcontainers_features/jetbrains`も追記しています。
-docker volumeを`/home/vscode/.cache/JetBrains/RemoteDev/dist`へマウントしようとすると、`/home/vscode/.cache`以下のフォルダが存在しないので、dockerは`/home/vscode/.cache/JetBrains/RemoteDev/dist`までをroot権限で作成してしまいます。これだと書き込みエラーになってしまうので、あらかじめマウントポイントのフォルダを作成するFeaturesとして`ghcr.io/ouvill/devcontainers_features/jetbrains`を作成しました。
 
 以上でJetBrainsのIDEを快適に起動させる準備が整いました。
 
@@ -231,6 +225,8 @@ docker volumeを`/home/vscode/.cache/JetBrains/RemoteDev/dist`へマウントし
 - 厳密なホストチェック:しない
 
 で接続してください。
+
+IDE選択時、インストールオプションから「インストールパスのカスタマイズ」、「/jetbrains」を指定してください。
 
 ## まとめ
 
@@ -249,13 +245,12 @@ docker volume create jetbrains
     "ghcr.io/ouvill/devcontainers_features/authorized_keys:0": {
       "github_account": "ouvill" // githubのアカウント名
     },
-    "ghcr.io/ouvill/devcontainers_features/jetbrains:1": {}
   },
   "forwardPorts": [
     2222
   ],
   "mounts": [
-    "source=jetbrains,target=/home/vscode/.cache/JetBrains/RemoteDev/dist,type=volume"
+    "source=jetbrains,target=/jetbrains,type=volume"
   ]
 }
 ```
