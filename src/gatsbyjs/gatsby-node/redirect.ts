@@ -261,6 +261,7 @@ export const createRedirects = async ({
       fromPath: from,
       toPath: to,
       isPermanent: true,
+      redirectInBrowser: true,
     })
   })
 }
