@@ -1,18 +1,26 @@
-const webpack = require('webpack');
-const { createFilePath } = require("gatsby-source-filesystem")
-const path = require(`path`)
+import { GatsbyNode } from "gatsby"
+import { createFilePath } from "gatsby-source-filesystem"
+import path from "path"
+import webpack from "webpack"
 
-exports.onCreateWebpackConfig = ({ loaders, actions, getConfig }) => {
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
+  loaders,
+  actions,
+  getConfig,
+}) => {
   const config = getConfig()
-  config.plugins.push(new webpack.ProvidePlugin({
-    "React": "react",
-  }))
+  config.plugins.push(
+    new webpack.ProvidePlugin({
+      React: "react",
+    })
+  )
   actions.replaceWebpackConfig(config)
 }
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  createTypes(`
+export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] =
+  ({ actions }) => {
+    const { createTypes } = actions
+    createTypes(`
   type MarkdownRemarkFrontmatter @infer {
     cover: File @fileByRelativePath
   }
@@ -20,10 +28,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   type MarkdownRemark implements Node @infer {
     frontmatter: MarkdownRemarkFrontmatter
   }`)
-}
+  }
 
-
-exports.createPages = async ({ graphql, actions }) => {
+export const createPages: GatsbyNode["createPages"] = async ({
+  graphql,
+  actions,
+}) => {
   const { createPage } = actions
 
   await createBlogPosts(graphql, createPage)
@@ -31,9 +41,13 @@ exports.createPages = async ({ graphql, actions }) => {
   await createIndexPage(graphql, createPage)
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+export const onCreateNode: GatsbyNode["onCreateNode"] = ({
+  node,
+  actions,
+  getNode,
+}) => {
   const { createNodeField } = actions
-
+  //
   if (node.internal.type === `MarkdownRemark`) {
     const filepath = node.fileAbsolutePath
     const reg = /content\/blog\/.*/
@@ -44,11 +58,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         value: `/blog${value}`,
       })
-
+      //
       createNodeField({
         name: `githubURL`,
         node,
-        value: `https://github.com/Ouvill/gatsbyjs_blog/tree/master/${reg.exec(filepath)[0]}`
+        value: `https://github.com/Ouvill/gatsbyjs_blog/tree/master/${
+          reg.exec(filepath)[0]
+        }`,
       })
     }
     if (filepath.match(/content\/pages/)) {
@@ -61,11 +77,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
   }
 }
-
+//
 function createIndexPage(graphql, createPage) {
   const indexPage = path.resolve("./src/templates/indexes.tsx")
   const listNum = 12
-
+  //
   return graphql(`
     {
       site {
@@ -79,16 +95,16 @@ function createIndexPage(graphql, createPage) {
         totalCount
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors
     }
-
+    //
     const total = result.data.allMarkdownRemark.totalCount
     const defaultCover = result.data.site.siteMetadata.defaultCover
     const pages = total / listNum
     const rest = total % listNum
-    for (i = 0; i < pages; i++) {
+    for (let i = 0; i < pages; i++) {
       const next = (i === pages - 1 && rest) || i < pages - 1 ? i + 1 : null
       const previous = i === 0 ? null : i - 1
       if (i == 0) {
@@ -103,7 +119,7 @@ function createIndexPage(graphql, createPage) {
           },
         })
       }
-
+      //
       createPage({
         path: `indexes/${i}`,
         component: indexPage,
@@ -117,14 +133,14 @@ function createIndexPage(graphql, createPage) {
     }
   })
 }
-
+//
 function createStaticPages(graphql, createPage) {
   const blogPost = path.resolve(`./src/templates/StaticPage.tsx`)
   return graphql(`
     {
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/pages/" } }
-        sort: {frontmatter: {date: DESC}}
+        sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
         edges {
@@ -139,7 +155,7 @@ function createStaticPages(graphql, createPage) {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       console.log(result.errors)
       throw result.errors
@@ -158,7 +174,7 @@ function createStaticPages(graphql, createPage) {
     return null
   })
 }
-
+//
 function createBlogPosts(graphql, createPage) {
   const blogPost = path.resolve(`./src/templates/BlogPost.tsx`)
   return graphql(`
@@ -170,7 +186,7 @@ function createBlogPosts(graphql, createPage) {
       }
       allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-        sort: {frontmatter: {date: DESC}}
+        sort: { frontmatter: { date: DESC } }
         limit: 1000
       ) {
         edges {
@@ -185,14 +201,14 @@ function createBlogPosts(graphql, createPage) {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       throw result.errors
     }
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges
     const defaultCover = result.data.site.siteMetadata.defaultCover
-
+    //
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
