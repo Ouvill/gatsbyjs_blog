@@ -1,3 +1,5 @@
+import { GatsbyNode } from "gatsby"
+
 const redirectList = [
   {
     from: "/blog/2018-03-10--agreement_github_personal/agreement_github_personal/",
@@ -248,3 +250,19 @@ const redirectList = [
     to: "/blog/2022-12-20-jetbrains_devcontainer/",
   },
 ]
+
+export const createRedirects: GatsbyNode["createPages"] = async ({
+  graphql,
+  actions,
+}) => {
+  const { createRedirect } = actions
+
+  redirectList.forEach(({ from, to }) => {
+    createRedirect({
+      fromPath: from,
+      toPath: to,
+      isPermanent: true,
+      redirectInBrowser: true,
+    })
+  })
+}
