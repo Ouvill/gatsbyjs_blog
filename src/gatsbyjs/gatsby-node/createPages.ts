@@ -1,5 +1,6 @@
 import { GatsbyNode, CreatePagesArgs } from "gatsby"
 import path from "path"
+import { createRedirects } from "./redirect"
 
 type CreatePageSubFunction = {
   graphql: CreatePagesArgs["graphql"]
@@ -161,9 +162,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
   actions,
   reporter,
 }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   await createIndexPage({ graphql, createPage })
   await createBlogPosts({ graphql, createPage })
   await createStaticPages({ graphql, createPage })
+  await createRedirects({ createRedirect })
 }

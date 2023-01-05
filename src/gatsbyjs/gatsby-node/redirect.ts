@@ -1,4 +1,4 @@
-import { GatsbyNode } from "gatsby"
+import { CreatePagesArgs } from "gatsby"
 
 const redirectList = [
   {
@@ -251,12 +251,11 @@ const redirectList = [
   },
 ]
 
-export const createRedirects: GatsbyNode["createPages"] = async ({
-  graphql,
-  actions,
+export const createRedirects = async ({
+  createRedirect,
+}: {
+  createRedirect: CreatePagesArgs["actions"]["createRedirect"]
 }) => {
-  const { createRedirect } = actions
-
   redirectList.forEach(({ from, to }) => {
     createRedirect({
       fromPath: from,
