@@ -14,7 +14,7 @@
     "@material-ui/styles": "^4.11.5",
     "axios": "^1.2.1",
     "formik": "^2.2.9",
-    "gatsby": "^5.3.2",
+    "gatsby": "^5.4.0",
     "gatsby-plugin-google-analytics": "^5.3.0",
     "gatsby-plugin-image": "^3.3.2",
     "gatsby-plugin-manifest": "^5.3.1",
