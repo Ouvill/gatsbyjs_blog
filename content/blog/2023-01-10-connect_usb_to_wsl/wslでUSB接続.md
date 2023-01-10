@@ -13,7 +13,7 @@ tags:
 
 ## インストール
 
-Windows側
+Windows側、Powershell
 
 ```powershell
 winget install --interactive --exact dorssel.usbipd-win 
@@ -28,11 +28,17 @@ sudo update-alternatives --install /usr/local/bin/usbip usbip `ls /usr/lib/linux
 
 ## USBデバイスの確認
 
+Powershell
+
 ```powershell
 usbip wsl list 
 ```
 
+接続したいUSBデバイスのbus-idを確認する。
+
 ## USBデバイスの接続
+
+Powershell(管理者権限必要)
 
 ```powershell
  usbipd wsl attach --busid <bus-id>
@@ -40,7 +46,9 @@ usbip wsl list
 
 ## Yubikey を転送してみる
 
-YubikeyをWSLに転送してみた。
+YubikeyをWSLに転送してみた。`2-1`は自分のパソコンのYubikeyのbus-id。パソコンによって異なると思われる。
+
+Powershell側
 
 ```powershell
 usbipd wsl attach --busid 2-1
@@ -65,7 +73,6 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 だが、`gpg --card-status`を実行しても、動作しない。
 
-
 [Yubikey · Discussion #127 · dorssel/usbipd-win · GitHub](https://github.com/dorssel/usbipd-win/discussions/127#discussioncomment-1817105)
 
 上記リンクを参考に、`pcscd`をインストールする。
@@ -85,6 +92,12 @@ sudo service pcscd start
 再起動するたびに`pcscd`は停止するので都度コマンド入力する必要がありそう。
 
 それかbashrc等に仕込むか。
+
+## 注意点
+
+WSL側でYubikeyを利用できるようになったけど、WSL側で利用している間は、Windows側でYubikeyは利用できないので注意
+
+……もしYubikeyを二本持っているのなら、パソコンに二本とも差して片方Windows、片方WSLで利用するという手もある。Yubikeyはバックアップ用としても一本持つのが推奨されているので、二本所有している人は結構いそうだし案外できそう。
 
 ## 参考
 
