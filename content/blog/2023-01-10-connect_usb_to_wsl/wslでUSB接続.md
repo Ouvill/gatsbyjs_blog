@@ -31,7 +31,7 @@ sudo update-alternatives --install /usr/local/bin/usbip usbip `ls /usr/lib/linux
 Powershell
 
 ```powershell
-usbip wsl list 
+usbipd wsl list 
 ```
 
 接続したいUSBデバイスのbus-idを確認する。
