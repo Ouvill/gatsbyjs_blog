@@ -89,9 +89,14 @@ sudo service pcscd start
 
 `gpg --card-status`でYubikeyが認識されることが確認できた。
 
-再起動するたびに`pcscd`は停止するので都度コマンド入力する必要がありそう。
+~~再起動するたびに`pcscd`は停止するので都度コマンド入力する必要がありそう。~~
 
-それかbashrc等に仕込むか。
+~~それかbashrc等に仕込むか。~~
+
+いつの間にか、wslでsystemdが利用できるようになっていた。以下のURLを参考にsystemdで自動起動するように設定すると、再起動しても`pcscd`が有効になっている。
+
+https://learn.microsoft.com/ja-jp/windows/wsl/systemd
+
 
 ## 注意点
 
