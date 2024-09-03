@@ -3,7 +3,11 @@ title: Gitlab と Discord をSlack APIを使ってサクッと連携させる。
 subTitle: "Discord を開発ツールとして使う"
 date: 2018-11-23 00:00:00
 category: "develop"
-cover:
+tag: 
+    - discord
+    - gitlab
+    - slack
+    - webhook
 ---
 
 ## はじめに結論

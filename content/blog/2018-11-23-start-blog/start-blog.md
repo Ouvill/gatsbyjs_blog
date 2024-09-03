@@ -4,6 +4,11 @@ subTitle: "ブログを更新していけるのか！？"
 date: 2018-11-23 01:00:00
 category: "diary"
 cover: icon2_small.jpg
+tag: 
+    - blog
+    - gatsby
+    - netlify
+    - gitlab
 ---
 
 現在メインのブログを Wordpress というブログ管理ソフトで執筆しています。しかし、最近 Wordpress が使いにくいなぁっと感じるようになってきました。今回は新しいブログシステムを模索しているという話

@@ -3,7 +3,8 @@ title: "Twitter で #hiyokonitsuduke タグが流行っているーエンジニ�
 subTitle: "Twitter 転職で高待遇？？"
 date: 2018-05-19 00:00:00
 category: "develop"
-cover:
+tag: 
+    - twitter
 ---
 
 本日 Twitter を閲覧していると、「[#hiyokonitsuduke](https://twitter.com/search?f=tweets&q=%23hiyokonitsuduke&src=typd)」というタグが流行っていました。今回はそのことについて

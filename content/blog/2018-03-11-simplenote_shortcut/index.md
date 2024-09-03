@@ -3,7 +3,10 @@ title: "Simplenote のショートカットについて"
 subTitle: "Simplenote は軽いメモ帳"
 date: 2018-03-11 00:00:00
 category: "develop"
-cover:
+tag: 
+    - simplenote
+    - shortcut
+    - markdown
 ---
 
 Simplenote というオンラインメモツールがあります。

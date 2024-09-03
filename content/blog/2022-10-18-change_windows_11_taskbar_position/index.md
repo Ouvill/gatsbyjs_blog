@@ -21,8 +21,6 @@ Windows 10のときにタスクバー位置を変更していると、Windows 11
 - `Settings` を開く。
 - 上から二行目、左から五列目を `03` に変更すると、タスクバーを下に変更できる。
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ef355e1-60c8-4634-9071-b8f6c5e65b01/Untitled.png)
-
 ## マルチディスプレイの場合
 
 - `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MMStuckRects3` を開く

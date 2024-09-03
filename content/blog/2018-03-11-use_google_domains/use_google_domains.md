@@ -3,7 +3,10 @@ title: お名前.com から Google Domainsにドメイン管理を移管して�
 subTitle: "Google Domain のメニューは使いやすい"
 date: 2018-03-11 01:00:00
 category: "develop"
-cover:
+tag: 
+    - domain
+    - google
+    - ouvill.net
 ---
 
 ブログを書いている皆さんはドメインを何処で取得しましたか？「お名前.com」で取得している人が多いと思います。私も「お名前.com」で取得しました。ですが、本日 ouvill.net ドメインの管理先を「お名前.com」から「Google Domains」に変更いたしました。

@@ -3,7 +3,8 @@ title: "Signal を使いたい。皆も使おう！！"
 subTitle: "秘密の暗号ってワクワクしない？"
 date: 2018-10-23 00:00:00
 category: "develop"
-cover:
+tag: 
+    - encrypt
 ---
 
 みなさん、友人とコミュニケーションするときは何を利用していますか？

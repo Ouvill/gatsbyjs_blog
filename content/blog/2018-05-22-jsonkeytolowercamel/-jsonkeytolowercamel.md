@@ -3,7 +3,10 @@ title: "スネークケースで登録されたJSONオブジェクトのキー�
 subTitle: "統一したい"
 date: 2018-05-22 00:00:00
 category: "develop"
-cover:
+tag: 
+    - javascript
+    - json
+    - camelcase
 ---
 こんにちは、今回はスネークケースで登録されたJSONオブジェクトのキーをキャメルケースに変換する方法についてです。
 
