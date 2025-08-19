@@ -1,5 +1,5 @@
 ---
-title: プログラミング言語雑感(2024年)：C, C++, Java, C#, Python, JavaScript,　Ruby, PHP, Flutter, Rust, Go 
+title: プログラミング言語雑感(2024年)：C, C++, Java, C#, Python, JavaScript,Ruby, PHP, Flutter, Rust, Go 
 date: 2024-09-04
 tags:
   - C
